@@ -23,7 +23,7 @@ export default function Home() {
         <div className="flex flex-col mx-80 my-20">
             <h1 className="text-2xl text-black font-light">Your Flashcard Decks</h1>
             <hr className="border-gray-200 my-5"></hr>
-            <div className="border border-gray-200 shadow-sm rounded-lg p-6">
+            <div className="border border-gray-200 shadow-sm  hover:shadow-lg transition-shadow duration-300 cursor-pointer rounded-lg p-6">
               <div className="flex justify-between">
                 <div>
                   <h2 className="text-xl font-medium text-black mb-1">Math Basic</h2>
