@@ -1,11 +1,21 @@
+"use client"
+
+import { useRouter } from "next/navigation"
+
 export default function Flashcard(){
+
+    const router=useRouter()
+
+    function goback(){
+        router.back()
+    }
 
     return(
 
         <div className="flex flex-col items-center h-screen">
             <div className="w-2xl">
                 <div className="flex justify-between my-10">
-                    <p className="text-gray-600">Back</p>
+                    <p className="text-gray-600 hover:text-black hover:cursor-pointer "onClick={goback} >Back</p>
                     <p className="text-lg font-medium">Deck: Math Basic</p>
                 </div>
                 <div >
