@@ -4,7 +4,7 @@ import { Edit, Trash2, Plus, Play, Delete } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 
-function Displaycard(){
+function Displaycard({val}){
 
     const router=useRouter()
 
@@ -17,7 +17,7 @@ function Displaycard(){
         <div className="border border-gray-200 shadow-sm  hover:shadow-lg transition-shadow duration-300 cursor-pointer rounded-lg p-6" onClick={gotoflashcards} >
             <div className="flex justify-between">
                 <div>
-                  <h2 className="text-xl font-medium text-black mb-1">Math Basic</h2>
+                  <h2 className="text-xl font-medium text-black mb-1">{val.title}</h2>
                 </div>
                 <div className="flex gap-x-3">
                   <button className="text-gray-500 text-sm flex font-medium hover:text-blue-500 hover:cursor-pointer items-center gap-x-1">

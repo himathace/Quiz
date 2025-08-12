@@ -5,12 +5,13 @@ const fetchdata=async ()=>{
 
   try{
 
-    const userdata=await fetch("http://localhost:3000/api/login")
+    const userdata=await fetch("http://localhost:3000/api/displaydeck")
     const data=await userdata.json()
     return data.message
   }
   catch(error){
     console.log(error)
+    return []
   }
 }
 
@@ -18,12 +19,12 @@ const fetchdata=async ()=>{
 const Home=async ()=>{
 
   const date=await fetchdata()
-  console.log(date)
+
 
   return (
   
     <div className="h-screen">
-        <h1 className="text-4xl text-black font-light text-center m-10">Flashcard Quiz App</h1>
+        <h1 className="text-4xl text-black font-light text-center m-10">{date && date.length > 0 ? date[0].name : "No user found"}</h1>
   
         <div className="flex justify-center gap-x-5">
           <button className="border-2 border-black bg-white text-black hover:bg-black hover:text-white font-medium pr-6 pl-4 py-3 rounded-lg transition-all duration-200 cursor-pointer flex gap-x-3">
@@ -40,7 +41,12 @@ const Home=async ()=>{
             <h1 className="text-2xl text-black font-light">Your Flashcard Decks</h1>
             <hr className="border-gray-200 my-5"></hr>
 
-            <Displaycard />
+            {
+              date.map((dis)=>{
+                return <Displaycard val={dis} key={dis._id} />
+              })
+            }
+
         </div>
     </div>
   

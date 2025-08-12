@@ -1,6 +1,8 @@
+import  connect  from "../../../lib/mongodb";
+import user from "@/models/user";
+
 export async function GET(request) {
-  return new Response(JSON.stringify({ message: "Hello from App Router backend!" }), {
-    status: 200,
-    headers: { "Content-Type": "application/json" },
-  });
+  await connect()
+  const users=await user.find()
+  return Response.json({message:users})
 }
