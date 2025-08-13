@@ -1,5 +1,6 @@
 import { Edit, Trash2, Plus, Play, Delete } from "lucide-react"
 import Displaycard from "./components/displaycard"
+import Newdeck from "./components/newdeck"
 
 const fetchdata=async ()=>{
 
@@ -24,13 +25,12 @@ const Home=async ()=>{
   return (
   
     <div className="h-screen">
-        <h1 className="text-4xl text-black font-light text-center m-10">{date && date.length > 0 ? date[0].name : "No user found"}</h1>
+        <h1 className="text-4xl text-black font-light text-center m-10">Flashcard Quiz App</h1>
   
         <div className="flex justify-center gap-x-5">
-          <button className="border-2 border-black bg-white text-black hover:bg-black hover:text-white font-medium pr-6 pl-4 py-3 rounded-lg transition-all duration-200 cursor-pointer flex gap-x-3">
-            <Plus></Plus>
-            Create New Deck
-          </button>
+          
+          <Newdeck />
+          
           <button className="border-2 border-black bg-black text-white hover:bg-white hover:text-black font-medium px-8 py-3 rounded-md transition-all duration-200 cursor-pointer flex gap-x-5">
             <Play></Play>
             Start Quiz
