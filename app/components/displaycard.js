@@ -2,14 +2,20 @@
 
 import { Edit, Trash2, Plus, Play, Delete } from "lucide-react"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
+
+// const fetchdata=()=>{
+
+//   await fetch("localhost:3000/")
+// }
 
 
-function Displaycard({val}){
+const Displaycard=({val})=>{
 
     const router=useRouter()
 
     const gotoflashcards=()=>{
-        router.push("/flashcards")
+        router.push(`/flashcards/${val._id}`)
     }
 
     return(
