@@ -1,3 +1,4 @@
+import Flash from "@/app/components/Flash"
 
 
 
@@ -49,9 +50,15 @@ const use=async ({params})=>{
                 <div>
                     <p className="text-lg font-medium mb-3">Flashcards:</p>
                 </div>
-                <div className="border border-gray-200 rounded-lg hover:border-gray-400 p-4 mb-10">
-                    cards
-                </div>
+
+                {
+                    carddat.cards.length===0 ?
+                        <h1 className="p-4 mb-10">No Flashcards Found</h1> :
+
+                            carddat.cards.map((va)=>{
+                                return <Flash xx={va.quiz} key={va._id} />
+                            })
+                }
                 <div className="flex justify-between">
                     <button className="bg-black text-white py-3 px-20 rounded-lg font-medium">start quiz</button>
                     <button className="border border-gray-200 py-3 px-20 rounded-lg font-medium" >view status</button>
