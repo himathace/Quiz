@@ -1,38 +1,10 @@
-"use client"
-
-const CreateNewDeck=async (event)=>{
-
-    event.preventDefault()
-
-    try{
-
-        const formData=new FormData(event.target)
-        const DECKtitlte=formData.get("deckname")
-    
-        await fetch("http://localhost:3000/api/newdeck",{
-            method:"POST",
-            headers:{
-                "content-type":"application/json"
-            },
-            body:JSON.stringify({
-                title:DECKtitlte
-            })
-        })
-    }
-    catch(error){
-        alert(error)
-
-    }
-
-}
-
-
+import CreateNewDeck from "./action"
 
 const Create=()=>{
 
     return(
 
-        <form onSubmit={CreateNewDeck}>
+        <form action={CreateNewDeck}>
             <div className="flex flex-col h-screen justify-center items-center">
                 <div className="border-0 shadow-lg bg-white p-5">
                     <div className="flex justify-between mb-3">

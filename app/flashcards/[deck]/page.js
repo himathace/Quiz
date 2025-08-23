@@ -1,5 +1,5 @@
 import Flash from "@/app/components/Flash"
-
+import Link from "next/link"
 
 
 const use=async ({params})=>{
@@ -45,7 +45,9 @@ const use=async ({params})=>{
                     <p className="text-lg font-medium">{carddat.title}</p>
                 </div>
                 <div >
-                    <button className="w-full text-center border-1 border-dashed hover:border-2 cursor-pointer bg-gray-200 font-medium text-black  py-3 px-4 rounded-lg mb-8">Add New Flashcard</button>
+                    <Link href={`/flashcards/${carddat._id}/add`}>
+                        <button className="w-full text-center border-1 border-dashed hover:border-2 cursor-pointer bg-gray-200 font-medium text-black  py-3 px-4 rounded-lg mb-8">Add New Flashcard</button>
+                    </Link>
                 </div>
                 <div>
                     <p className="text-lg font-medium mb-3">Flashcards:</p>
