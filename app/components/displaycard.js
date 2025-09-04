@@ -4,42 +4,56 @@ import { Edit, Trash2, Plus, Play, Delete } from "lucide-react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 
-// const fetchdata=()=>{
-
-//   await fetch("localhost:3000/")
-// }
-
 
 const Displaycard=({val})=>{
 
-    const router=useRouter()
-
-    const gotoflashcards=()=>{
-        router.push(`/flashcards/${val._id}`)
-    }
-
     return(
 
-        <div className="border border-gray-200 shadow-sm  hover:shadow-lg transition-shadow duration-300 cursor-pointer rounded-lg p-6" onClick={gotoflashcards} >
-            <div className="flex justify-between">
-                <div>
-                  <h2 className="text-xl font-medium text-black mb-1">{val.title}</h2>
-                </div>
-                <div className="flex gap-x-3">
-                  <button className="text-gray-500 text-sm flex font-medium hover:text-blue-500 hover:cursor-pointer items-center gap-x-1">
-                    <Edit size={20}></Edit>
-                    Edit
-                  </button>
-                  <button className="text-gray-500 text-sm flex font-medium hover:text-red-500 hover:cursor-pointer items-center gap-x-1">
-                    <Delete size={20}></Delete>
-                    Delete
-                  </button>
-                </div>
-            </div>
+        <div className="border border-gray-200 shadow-sm  hover:shadow-xl transition-shadow duration-300  rounded-lg h-96 flex flex-col">
+          <div className="h-2/6 bg-amber-950">
+            image
+          </div>
 
-            <div>
-                <p className="text-gray-500 text-sm">25 cards</p>
-            </div>
+          <div className="p-3">
+
+              <div className="mb-2">
+                <p className="text-xl font-semibold text-black">{val.title}</p>
+                <p className="font-normal text-gray-600 text-sm">Essential words and phrases for beginners</p>
+              </div>
+
+              <div className="flex justify-between mb-2">
+
+                <p className="text-sm text-gray-600">120 cards</p>
+                <p className="text-sm text-gray-600">2 days ago</p>
+
+              </div>
+              
+              <div className="flex flex-col mb-2">
+                <div className="flex justify-between">
+                  <p className="text-gray-600 text-sm">Progress</p>
+                  <p className="text-gray-600 text-sm">72%</p>
+                </div>
+                <div>
+                  bar
+                </div>
+              </div>
+
+              <div className="mb-2">
+                <p>Language</p>
+              </div>
+
+              <div className="flex gap-x-3">
+                <Link href={`/flashcards/${val._id}`}>
+                  <button className="text-white text-sm flex  justify-center font-medium hover:cursor-pointer items-center gap-x-3 bg-gradient-to-r from-indigo-500 to-purple-500 w-96 h-10 rounded-xl ">
+                    <Play></Play>
+                      Study Now
+                  </button>
+                </Link>
+                <button className="text-gray-500 text-sm flex font-medium  hover:cursor-pointer items-center gap-x-1 h-10 bg-gray-400 rounded-xl">
+                  Delete
+                </button>
+              </div>
+          </div>
         </div>
 
 
