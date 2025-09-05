@@ -2,7 +2,10 @@ const Flash=({xx})=>{
 
     return(
     
-        <div className="border border-gray-200 rounded-lg hover:border-gray-400 p-4 mb-3">{xx}</div>
+        <div>
+            <div className="border h-56 flex justify-center items-center font-semibold text-xl border-gray-300 rounded-lg shadow-lg p-4 mb-3">{xx}</div>
+
+        </div>
     )
 }
 
