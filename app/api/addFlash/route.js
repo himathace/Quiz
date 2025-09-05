@@ -7,7 +7,7 @@ export async function POST (request){
         const update=await request.json()
         await Deck.findByIdAndUpdate(
             update.document,
-            {$push:{cards:{quiz:update.question}}}
+            {$push:{cards:{quiz:update.question,answer:update.Answer}}}
         
         )
         return Response.json({message:"card added"})

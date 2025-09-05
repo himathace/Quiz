@@ -6,6 +6,7 @@ const fetchdata=async(formdata)=>{
 
         const deckc=formdata.get("deck")
         const userquestion=formdata.get("qu")
+        const useranswer=formdata.get("answer")
         const userdata=await fetch("http://localhost:3000/api/addFlash",{
             method:"POST",
             headers:{
@@ -13,6 +14,7 @@ const fetchdata=async(formdata)=>{
             },
             body:JSON.stringify({
                 question:userquestion,
+                Answer:useranswer,
                 document:deckc
             })
 
@@ -45,9 +47,12 @@ const Add=async({params})=>{
 
                         <label className="mb-2 font-semibold">Question</label>
                         <textarea type="text" placeholder="Enter Your question" name="qu" className="w-xl border p-3 h-28 ring-0 focus:ring-1 border-gray-700 focus:outline-none focus:border-purple-700   rounded-xl mb-5"></textarea>
+
                         <input type="hidden" name="deck" value={deck} />
+
                         <label className="mb-2 font-semibold">Correct Answer</label>
-                        <input type="text" placeholder="Enter Your answer" className="w-full p-3 border border-gray-700 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-5 "></input>
+                        <input type="text" name="answer" placeholder="Enter Your answer" className="w-full p-3 border border-gray-700 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-5 "></input>
+
                         <label className="mb-2 font-semibold">Answer Options</label>
                         <input type="text" placeholder="option 1" className="w-full p-3 border border-gray-700 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-2 "></input>
                         <input type="text" placeholder="option 2" className="w-full p-3 border border-gray-700 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-5 "></input>
