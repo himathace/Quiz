@@ -7,6 +7,8 @@ const fetchdata=async(formdata)=>{
         const deckc=formdata.get("deck")
         const userquestion=formdata.get("qu")
         const useranswer=formdata.get("answer")
+        const carddificalty=formdata.get("deficult")
+
         const userdata=await fetch("http://localhost:3000/api/addFlash",{
             method:"POST",
             headers:{
@@ -15,7 +17,8 @@ const fetchdata=async(formdata)=>{
             body:JSON.stringify({
                 question:userquestion,
                 Answer:useranswer,
-                document:deckc
+                document:deckc,
+                flashdificulty:carddificalty
             })
 
         })
@@ -46,18 +49,23 @@ const Add=async({params})=>{
                     <h1 className="text-center text-2xl font-semibold mb-10">Design Your Flashcard</h1>
 
                         <label className="mb-2 font-semibold">Question</label>
-                        <textarea type="text" placeholder="Enter Your question" name="qu" className="w-xl border p-3 h-28 ring-0 focus:ring-1 border-gray-300 focus:outline-none focus:border-purple-700   rounded-xl mb-5"></textarea>
+                        <textarea type="text" placeholder="Enter Your question" name="qu" className="w-xl border p-2 h-28 ring-0 focus:ring-1 border-gray-300 focus:outline-none focus:border-purple-700   rounded-xl mb-5"></textarea>
 
                         <input type="hidden" name="deck" value={deck} />
 
                         <label className="mb-2 font-semibold">Correct Answer</label>
-                        <input type="text" name="answer" placeholder="Enter Your answer" className="w-full p-3 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-5 "></input>
+                        <input type="text" name="answer" placeholder="Enter Your answer" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-5 "></input>
 
                         <label className="mb-2 font-semibold">Answer Options</label>
-                        <input type="text" placeholder="option 1" className="w-full p-3 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-2 "></input>
-                        <input type="text" placeholder="option 2" className="w-full p-3 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-5 "></input>
-                        <label className="mb-2 font-semibold">Description</label>
-                        <input type="text" placeholder="Enter Description about" className="h-12 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl p-3" />
+                        <input type="text" placeholder="option 1" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-2 "></input>
+                        <input type="text" placeholder="option 2" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-5 "></input>
+                        <label className="mb-2 font-semibold">Deficulty</label>
+                        {/* <input type="text" placeholder="Enter Description about" className="h-12 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl p-3" /> */}
+                        <select className="h-10 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl pl-2" name="deficult">
+                            <option>Easy</option>
+                            <option>Medium</option>
+                            <option>Hard</option>
+                        </select>
 
 
                         <div className="flex justify-between mt-14 gap-x-5">

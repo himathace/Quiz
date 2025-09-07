@@ -18,14 +18,17 @@ const cardsschema=new mongoose.Schema({
     },
     answer:{
         type:String,
+    },
+    deficulty:{
+        type:String
     }
+
 })
 
 
 const displaydeck=new mongoose.Schema({
     title:String,
     cards:[cardsschema]
-
 })
 
 export default mongoose.models.Deck || mongoose.model("Deck",displaydeck)

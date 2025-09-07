@@ -15,8 +15,11 @@ const Flash=({xx})=>{
                         {xx.quiz}
                     </div>
                     <div className="flex justify-between w-full mt-auto text-xs">
-                        <div className="w-9 h-5 bg-lime-300 rounded-xl flex justify-center items-center">
-                            <p>Easy</p>
+                        <div className="w-9 h-5 flex justify-center items-center">
+                            <p className={`rounded-xl p-1 ${
+                                xx.deficulty==="Easy" ? "bg-lime-500" :
+                                xx.deficulty==="Medium" ? "bg-yellow-500": "bg-red-500"
+                            }`}>{xx.deficulty}</p>
                         </div>
                         <p className="text-gray-600">Click to Flip</p>
                     </div>
