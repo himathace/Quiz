@@ -1,6 +1,7 @@
 import Flash from "@/app/components/Flash"
 import Link from "next/link"
 import { Settings,User,Plus,Search } from "lucide-react"
+import Searchflashcard from "@/app/components/searchFlashcard"
 
 
 const use=async ({params})=>{
@@ -41,7 +42,7 @@ const use=async ({params})=>{
 
         <div className="flex flex-col h-screen">
             
-            <div className="flex justify-between items-center bg-gradient-to-r h-24 px-16 py-5 border border-gray-300 ">
+            <div className="flex justify-between items-center bg-gradient-to-r h-24 p-5 border border-gray-300 ">
     
                 <div>
                     <h1 className="text-3xl bg-gradient-to-r text-black font-bold">FlashMaster</h1>
@@ -50,7 +51,7 @@ const use=async ({params})=>{
                 <div className="flex gap-x-3" >
                     <div>
                         <Link href={`/flashcards/${carddat._id}/add`}>
-                            <button className="w-full text-center border  border-gray-300 flex gap-x-2 cursor-pointer font-medium text-black  py-2 px-3 hover:bg-purple-500  rounded-lg hover:text-white b-8">
+                            <button className="w-full text-center border  border-gray-300 flex gap-x-2 cursor-pointer font-medium text-black  p-2 hover:bg-purple-500  rounded-lg hover:text-white b-8">
                                 <Plus></Plus>
                                 Add New Flashcard
                             </button>
@@ -72,10 +73,10 @@ const use=async ({params})=>{
 
             <div className="my-3 mx-16">
                 <p className="text-4xl font-medium bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">{carddat.title}</p>
-                <p className="text-sm text-gray-500">12 of 12 cards</p>
+                <p className="text-xs text-gray-500">12 of 12 cards</p>
             </div>
             <div className="flex justify-between mx-16 gap-x-5 mb-5">
-                <input type="text"  className="w-full h-10 border border-gray-300 rounded-lg p-3 focus:outline-none focus:border-purple-700 focus:border-2    " placeholder=" Search FlashCards"/>
+                <input type="text" className="w-full h-10 border border-gray-300 rounded-lg p-3 focus:outline-none focus:border-purple-700 focus:ring-1 " placeholder=" Search FlashCards"/>
                 <select className="border border-gray-300 rounded-lg p-2">
                     <option>All Levels</option>
                     <option>Easy</option>

@@ -5,4 +5,3 @@ export async function POST (request){
     const FIndFlashCard=await Deck.findById(body.DeckID)
     return Response.json({message:FIndFlashCard})
 }
-
