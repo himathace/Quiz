@@ -1,6 +1,6 @@
 import Flash from "@/app/components/Flash"
 import Link from "next/link"
-import { Settings,User,Plus,Search } from "lucide-react"
+import { Settings,User,Plus,Search,Book,BookOpen } from "lucide-react"
 import Searchflashcard from "@/app/components/searchFlashcard"
 
 
@@ -40,18 +40,31 @@ const use=async ({params})=>{
 
     return(
 
-        <div className="flex flex-col h-screen">
+        <div className="flex flex-col">
             
-            <div className="flex justify-between items-center bg-gradient-to-r h-24 p-5 border border-gray-300 ">
+            <div className="flex justify-between items-center bg-gradient-to-r  p-3 border bg-white border-gray-300 ">
     
-                <div>
-                    <h1 className="text-3xl bg-gradient-to-r text-black font-bold">FlashMaster</h1>
-                    <p className="text-sm text-gray-500">Work smater Not Harder</p>
+                <div className="flex gap-x-3 items-center">
+
+                    <BookOpen className="w-12 h-12 p-2 rounded-xl bg-purple-500" color="white"></BookOpen>   
+                    <div>
+                        <h1 className="text-2xl bg-gradient-to-r text-black font-bold">FlashMaster</h1>
+                        <p className="text-sm text-gray-500">Work smater Not Harder</p>
+                    </div>
                 </div>
-                <div className="flex gap-x-3" >
+                <div className="flex  gap-x-3" >
+
+                    <div className="flex mr-96 gap-x-5 items-center">
+                        <Link href={`/flashcards/${carddat._id}`}>
+                            <label className="text-black hover:text-purple-600 cursor-pointer font-light">Study Mode</label>
+                        </Link>
+                        <Link href={`/flashcards/${carddat._id}/quiz`}>
+                            <label className="text-gray-500 hover:text-purple-600 cursor-pointer font-light">Quiz Mode</label>
+                        </Link>
+                    </div>
                     <div>
                         <Link href={`/flashcards/${carddat._id}/add`}>
-                            <button className="w-full text-center border  border-gray-300 flex gap-x-2 cursor-pointer font-medium text-black  p-2 hover:bg-purple-500  rounded-lg hover:text-white b-8">
+                            <button className="transition-colors duration-300 w-full text-center border  border-gray-300 flex gap-x-2 cursor-pointer font-medium text-black  p-2 hover:bg-purple-500  rounded-lg hover:text-white b-8">
                                 <Plus></Plus>
                                 Add New Flashcard
                             </button>
@@ -59,10 +72,10 @@ const use=async ({params})=>{
                     </div>
 
 
-                    <button className="w-10  h-10 flex justify-center items-center border border-gray-300 rounded-lg hover:bg-purple-500 hover:text-white hover:cursor-pointer" >
+                    <button className="transition-colors duration-300 w-10  h-10 flex justify-center items-center border border-gray-300 rounded-lg hover:bg-purple-500 hover:text-white hover:cursor-pointer" >
                         <Settings></Settings>
                     </button>
-                    <button className="w-10  h-10 flex justify-center items-center border border-gray-300 rounded-lg hover:bg-purple-500 hover:text-white hover:cursor-pointer">
+                    <button className="transition-colors duration-300  w-10  h-10 flex justify-center items-center border border-gray-300 rounded-lg hover:bg-purple-500 hover:text-white hover:cursor-pointer">
                         <User></User>
                     </button>
 
@@ -72,7 +85,7 @@ const use=async ({params})=>{
             </div>
 
             <div className="my-3 mx-16">
-                <p className="text-4xl font-medium bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">{carddat.title}</p>
+                <p className="text-4xl font-medium bg-gradient-to-r  from-purple-500  to-fuchsia-500 bg-clip-text text-transparent">{carddat.title}</p>
                 <p className="text-xs text-gray-500">12 of 12 cards</p>
             </div>
             <div className="flex justify-between mx-16 gap-x-5 mb-5">
