@@ -1,4 +1,5 @@
-import { Book,BookOpen } from "lucide-react"
+import { BookOpen } from "lucide-react"
+import Link from "next/link"
 
 const Quiz=async({params})=>{
 
@@ -54,7 +55,9 @@ const Quiz=async({params})=>{
                         <p className="flex justify-center">4</p>
                     </div>
                 </div>
-                <button className="bg-purple-600 flex justify-center items-center px-8 py-2 rounded-xl text-white font-bold text-lg">start quiz</button>
+                <Link href={`/flashcards/${deck}/quiz/start`}>
+                    <button className="bg-purple-600 flex justify-center items-center px-8 py-2 rounded-xl text-white font-bold text-lg">start quiz</button>
+                </Link>
                 
             </div>
         </div>
