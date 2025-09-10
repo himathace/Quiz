@@ -1,32 +1,14 @@
+"use client"
+
 import { BookOpen } from "lucide-react"
 import Link from "next/link"
+import { useContext } from "react"
+import { usercontext } from "@/context/cardcontext"
 
-const Quiz=async({params})=>{
+const Quiz=()=>{
 
-    const {deck}=await params
+    const myuser=useContext(usercontext)
 
-    const GetUserData=async()=>{
-        try{
-            const userdata=await fetch("http://localhost:3000/api/quizDeck",{
-                method:"post",
-                headers:{
-                    "content-type":"application/json"
-                },
-                body:JSON.stringify({
-                    userquiz:deck
-                })
-            })
-
-            const data=await userdata.json()
-            return data.message
-
-        }
-        catch(error){
-            console.log(error)
-        }
-    }
-
-    const getdeckname=await GetUserData()
 
     return(
 
@@ -39,7 +21,7 @@ const Quiz=async({params})=>{
                 Test your knowledge with our interactive quiz platform
             </p>
             <div className="bg-white flex flex-col h-screen justify-center items-center rounded-xl px-96">
-                <h1 className=" flex justify-center text-6xl font-bold text-purple-500 mb-2">{getdeckname.title}</h1>
+                <h1 className=" flex justify-center text-6xl font-bold text-purple-500 mb-2">{myuser.title}</h1>
                 <p className="text-lg font-semibold text-gray-600 mb-10 text-center">Challenge yourself with our interactive quiz platform. Track your progress, compete with others, and master new topics through engaging questions.</p>
                 <div className="grid grid-cols-3 gap-3 mb-5">
                     <div className=" bg-purple-200 rounded-xl flex flex-col items-center justify-center p-4">
@@ -55,7 +37,7 @@ const Quiz=async({params})=>{
                         <p className="flex justify-center">4</p>
                     </div>
                 </div>
-                <Link href={`/flashcards/${deck}/quiz/start`}>
+                <Link href={`/flashcards/${myuser._id}/quiz/start`}>
                     <button className="bg-purple-600 flex justify-center items-center px-8 py-2 rounded-xl text-white font-bold text-lg">start quiz</button>
                 </Link>
                 
