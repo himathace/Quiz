@@ -3,36 +3,7 @@ import Displayquiz from "@/app/components/quiz"
 
 
 
-const startquiz=async({params})=>{
-
-    const {deck}=await params
-
-    const getuserdata=async()=>{
-        try{
-
-            const userdata=await fetch("http://localhost:3000/api/car",{
-                method:"POST",
-                headers:{
-                    "content-type":"application/json"
-                },
-                body:JSON.stringify({
-                    DeckID:deck
-                })
-
-            })
-
-            const data=await userdata.json()
-            return data.message
-        }
-        catch(error){
-            console.log(error)
-        }
-    }
-
-    const info=await getuserdata()
-
-
-
+const startquiz=()=>{
 
     return(
         <div className="h-screen flex flex-col bg-purple-50">

@@ -8,6 +8,10 @@ const fetchdata=async(formdata)=>{
         const userquestion=formdata.get("qu")
         const useranswer=formdata.get("answer")
         const carddificalty=formdata.get("deficult")
+        const option1=formdata.get("op1")
+        const option2=formdata.get("op2")
+        const option3=formdata.get("op3")
+        const option4=formdata.get("op4")
 
         const userdata=await fetch("http://localhost:3000/api/addFlash",{
             method:"POST",
@@ -18,7 +22,11 @@ const fetchdata=async(formdata)=>{
                 question:userquestion,
                 Answer:useranswer,
                 document:deckc,
-                flashdificulty:carddificalty
+                flashdificulty:carddificalty,
+                quizop1:option1,
+                quizop2:option2,
+                quizop3:option3,
+                quizop4:option4
             })
 
         })
@@ -57,10 +65,11 @@ const Add=async({params})=>{
                         <input type="text" name="answer" placeholder="Enter Your answer" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-5 "></input>
 
                         <label className="mb-2 font-semibold">Answer Options</label>
-                        <input type="text" placeholder="option 1" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-2 "></input>
-                        <input type="text" placeholder="option 2" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-5 "></input>
+                        <input type="text" placeholder="option 1" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-2 " name="op1"></input>
+                        <input type="text" placeholder="option 2" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-2 " name="op2"></input>
+                        <input type="text" placeholder="option 3" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-2 " name="op3"></input>
+                        <input type="text" placeholder="option 4" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-5 " name="op4"></input>
                         <label className="mb-2 font-semibold">Deficulty</label>
-                        {/* <input type="text" placeholder="Enter Description about" className="h-12 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl p-3" /> */}
                         <select className="h-10 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl pl-2" name="deficult">
                             <option>Easy</option>
                             <option>Medium</option>
