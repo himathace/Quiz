@@ -9,6 +9,19 @@ const Displayquiz=()=>{
 
     const document=useContext(usercontext)
     const [object,setobject]=useState(0)
+    const [select,setselect]=useState(null)
+
+    function handleclick(option){
+        setselect(option)
+
+        setTimeout(() => {
+            setobject(prev => prev+1)
+            setselect(null)
+            
+        },2000);
+    }
+
+
 
 
     if (!document || !Array.isArray(document.cards) || document.cards.length === 0) {
@@ -19,19 +32,48 @@ const Displayquiz=()=>{
         )
     }
 
+    if(document.cards.length === object){
+        return(
+            
+            <div className="bg-white border border-gray-300 p-11 rounded-3xl">
+                <p className="flex justify-center text-2xl font-bold mb-12">Quiz over</p>
+            </div>
+
+        )
+
+    }
+
 
     return(
 
         <div className="bg-white border border-gray-300 p-11 rounded-3xl">
             <p className="flex justify-center text-2xl font-bold mb-12 ">{document.cards[object].quiz}</p>
             <div className="flex flex-col gap-y-5 mb-5">
-                <button className="h-12 flex items-center p-5 font-semibold  ring-1 ring-gray-300 hover:bg-purple-100 hover:ring-purple-700 transition-all duration-300 rounded-xl">{document.cards[object].op1}</button>
-                <button className="h-12 ring-1 font-semibold ring-gray-300 rounded-xl hover:bg-purple-100 hover:ring-purple-700 transition-all duration-300  flex items-center p-5 ">{document.cards[object].op2}</button>
-                <button className="h-12 ring-1 font-semibold ring-gray-300 rounded-xl hover:bg-purple-100 hover:ring-purple-700 transition-all duration-300 flex items-center p-5 ">{document.cards[object].op3}</button>
-                <button className="h-12 ring-1 font-semibold ring-gray-300 rounded-xl hover:bg-purple-100 hover:ring-purple-700 transition-all duration-300 flex items-center p-5 ">{document.cards[object].op4}</button>
-            </div>
-            <div className="flex justify-center">
-                <button className="bg-purple-500 p-2 rounded-xl text-white" onClick={()=>setobject(prev => prev+1)} >Next Question</button>
+
+                {document.cards[object].options.map((val,index)=>{
+
+                    let bgcolor="bg-white hover:bg-purple-100 hover:ring-purple-700"
+
+                    if(select){
+
+                        if(val===select && val===document.cards[object].answer){
+                            bgcolor="bg-green-400 text-white"
+                        }
+                        else if(val===select && val !== document.cards[object].answer){
+                            bgcolor="bg-red-400 text-white"
+                        }
+                        else if(val===document.cards[object].answer){
+                            bgcolor="bg-green-500 text-white"
+                        }
+                        else{
+                            bgcolor="bg-white"
+                        }
+
+                    }
+
+                    return <button className={`h-12 flex items-center p-5 font-semibold  ring-1 ring-gray-300    transition-all duration-300 rounded-xl ${bgcolor}`} key={index} onClick={()=>handleclick(val)} disabled={ select ? true : false} >{val}</button>
+
+                })}
             </div>
         </div>
     )

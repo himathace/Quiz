@@ -4,18 +4,9 @@ const cardsschema=new mongoose.Schema({
     quiz:{
         type:String,
     },
-    op1:{
+    options:[{
         type:String,
-    },
-    op2:{
-        type:String,
-    },
-    op3:{
-        type:String,
-    },
-    op4:{
-        type:String,
-    },
+    }],
     answer:{
         type:String,
     },
