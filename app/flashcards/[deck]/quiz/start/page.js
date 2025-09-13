@@ -15,11 +15,6 @@ const startquiz=()=>{
                 Test your knowledge with our interactive quiz platform
             </p>
             <div className="mx-72">
-                <div className="flex justify-between">
-                    <p className="text-sm font-semibold">Question 1 of 8</p>
-                    <p className="text-sm font-semibold">Score: 0/8</p>
-                </div>
-                <p className="my-7">porgress bar</p>
                 <Displayquiz />
                 
             </div>
