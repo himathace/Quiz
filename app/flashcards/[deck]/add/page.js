@@ -1,3 +1,6 @@
+import Link from "next/link"
+import { redirect } from "next/navigation"
+
 const fetchdata=async(formdata)=>{
 
     "use server"
@@ -30,15 +33,25 @@ const fetchdata=async(formdata)=>{
             })
 
         })
-        const data=await userdata.json()
-        console.log(data)
 
+        if(userdata.ok){
+
+            const data=await userdata.json()
+            console.log(data)
+        }
+        else{
+            throw new Error("Failed to create flashcard")
+        }
+
+        
     }
     catch(error){
-
+        
         console.log(error)
+        return
     }
-
+    
+    redirect(`/flashcards/${formdata.get("deck")}`)
 }
 
 

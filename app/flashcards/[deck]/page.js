@@ -6,6 +6,7 @@ import { Settings,User,Plus,BookOpen } from "lucide-react"
 import Searchflashcard from "@/app/components/searchFlashcard"
 import { useContext } from "react"
 import { usercontext } from "@/context/cardcontext"
+import Add from "@/app/components/addnew"
 
 
 const use=()=>{
@@ -17,7 +18,7 @@ const use=()=>{
 
         <div className="flex flex-col">
             
-            <div className="flex justify-between items-center bg-gradient-to-r  p-3 border bg-white border-gray-300 ">
+            {/* <div className="flex justify-between items-center bg-gradient-to-r  p-3 border bg-white border-gray-300 ">
     
                 <div className="flex gap-x-3 items-center">
 
@@ -46,17 +47,25 @@ const use=()=>{
                         </Link>
                     </div>
 
-
-                    <button className="transition-colors duration-300 w-10  h-10 flex justify-center items-center border border-gray-300 rounded-lg hover:bg-purple-500 hover:text-white hover:cursor-pointer" >
-                        <Settings></Settings>
-                    </button>
-                    <button className="transition-colors duration-300  w-10  h-10 flex justify-center items-center border border-gray-300 rounded-lg hover:bg-purple-500 hover:text-white hover:cursor-pointer">
-                        <User></User>
-                    </button>
-
-
                 </div>
     
+            </div> */}
+
+            <div className="flex justify-center gap-x-3 pt-5 ">
+                <p className="flex items-center text-white bg-purple-500 p-2 rounded-xl"><BookOpen size={25}></BookOpen></p>
+                <h1 className="text-3xl font-bold text-from-violet-500 to-purple-400 flex items-center">QuizMaster</h1>
+            </div>
+            <p className="flex justify-center text-md text-gray-600 mb-5">
+                Test your knowledge with our interactive quiz platform
+            </p>
+
+            <div className="flex gap-x-5 items-center justify-center">
+                <Link href={`/flashcards/${myuser._id}`}>
+                    <label className="text-black hover:text-purple-600 cursor-pointer text-sm">Study Mode</label>
+                </Link>
+                <Link href={`/flashcards/${myuser._id}/quiz`}>
+                    <label className="text-gray-500 hover:text-purple-600 cursor-pointer text-sm">Quiz Mode</label>
+                </Link>
             </div>
 
             <div className="my-3 mx-16">
@@ -78,12 +87,13 @@ const use=()=>{
 
                     !myuser || !myuser.cards ? 
                         <h1 className="p-4 mb-10">Loading...</h1>:
-                    myuser.cards.length===0 ?
-                        <h1 className="p-4 mb-10">No Flashcards Found</h1> :
                             myuser.cards.map((va)=>{
                                 return <Flash xx={va}  key={va._id} />
                             })
                 }
+                <Link href={`/flashcards/${myuser._id}/add`}>
+                    <Add />
+                </Link>
             </div>
         </div>
 
