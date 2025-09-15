@@ -12,6 +12,7 @@ const Displayquiz=()=>{
     const [object,setobject]=useState(0)
     const [select,setselect]=useState(null)
     const [score,setscore]=useState(0)
+    const [progress,setprogress]=useState(0)
 
     function handleclick(option){
         setselect(option)
@@ -20,6 +21,8 @@ const Displayquiz=()=>{
             setscore(prev => prev+1)
         }
 
+        setprogress(prev => prev+(100/document.cards.length))
+        
         setTimeout(() => {
             setobject(prev => prev+1)
             setselect(null)
@@ -71,7 +74,12 @@ const Displayquiz=()=>{
                 <p className="text-sm font-semibold">Question {object+1} of {document.cards.length}</p>
                 <p className="text-sm font-semibold">Score: {score}/{document.cards.length}</p>
             </div>
-            <p className="my-7">porgress bar</p>
+            <div className="my-7 h-2 bg-gray-200 rounded-full">
+                <div 
+                    className="h-2 bg-purple-500 rounded-full transition-all duration-500 ease-out" 
+                    style={{ width: `${progress}%` }}
+                ></div>
+            </div>
 
             <div className="bg-white border border-gray-300 p-11 rounded-3xl">
                 <p className="flex justify-center text-2xl font-bold mb-12 ">{document.cards[object].quiz}</p>
