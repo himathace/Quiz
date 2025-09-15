@@ -44,18 +44,29 @@ const Displayquiz=()=>{
     if(document.cards.length === object){
         return(
             
-            <div className="bg-white border border-gray-300 p-11 rounded-3xl">
+            <div className="bg-white border mt-12 border-gray-300 p-11 rounded-3xl">
                 <div className="flex justify-center">
                     <Target className=" text-purple-400" size={50}></Target>
                 </div>
                 <p className="flex justify-center text-3xl font-bold mb-2">Quiz Complete</p>
                 <p className="flex justify-center text-sm text-gray-500  mb-5">Here's How You Performede</p>
                 <p className="flex justify-center text-5xl text-purple-500 font-bold mb-5">{score}/{document.cards.length}</p>
-                <p className="flex justify-center  rounded-full p-2 text-sm bg-purple-100 font-semibold  mb-5">{(score/document.cards.length)*100}% Correct</p>
-                <p className="flex justify-center rounded-xl p-5 text-sm  bg-purple-200 font-semibold  mb-10">Keep Practicing</p>
+                <div className="flex justify-center">
+
+                    <p className=" w-fit rounded-full p-2 text-sm bg-purple-100 font-semibold  mb-5">{Math.round((score/document.cards.length)*100)}% Correct</p>   
+                </div>
+                <p className="flex justify-center  rounded-xl p-5 text-sm   bg-purple-200 font-semibold  mb-10">
+                    {
+                        Math.round((score/document.cards.length)*100) > 80
+                        ? "Excellent"
+                        : Math.round((score/document.cards.length)*100) > 50
+                            ? "Well Done"
+                            : "Keep Practicing"
+                    }
+                </p>
                 <div className="flex justify-center gap-x-5">
-                    <button className="bg-purple-500 p-2 w-40 rounded-md text-white font-semibold">Try Again</button>
-                    <button className="bg-purple-100 p-2  w-40 rounded-md text-black font-semibold">Share Score</button>
+                    <button className="bg-purple-500 p-2 w-40 rounded-md text-white font-semibold cursor-pointer hover:bg-purple-700 transition-all duration-300">Try Again</button>
+                    <button className="bg-purple-100 p-2  w-40 rounded-md text-black font-semibold cursor-pointer hover:bg-purple-300 transition-all duration-300">Share Score</button>
                 </div>
 
                 

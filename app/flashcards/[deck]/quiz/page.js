@@ -38,12 +38,12 @@ const Quiz=()=>{
                         <p className="flex justify-center font-semibold text-lg">{ myuser.cards.length}</p>
                     </div>
                     <div className=" bg-purple-200 rounded-xl flex flex-col items-center justify-center p-4">
-                        <p className="mb-1">Questions</p>
-                        <p className="flex justify-center">4</p>
+                        <p className="mb-1 text-sm font-semibold">Choises</p>
+                        <p className="flex justify-center font-semibold text-lg">4</p>
                     </div>
                     <div className=" bg-purple-200 rounded-xl flex flex-col items-center justify-center p-4">
-                        <p className="mb-1">Attemps</p>
-                        <p className="flex justify-center">4</p>
+                        <p className="mb-1 text-sm font-semibold">Attemps</p>
+                        <p className="flex justify-center  font-semibold text-lg">4</p>
                     </div>
                 </div>
                 <Link href={`/flashcards/${myuser._id}/quiz/start`}>
