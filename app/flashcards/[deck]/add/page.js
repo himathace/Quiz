@@ -1,61 +1,4 @@
-import Link from "next/link"
-import { redirect } from "next/navigation"
-
-const fetchdata=async(formdata)=>{
-
-    "use server"
-
-    try{
-
-        const deckc=formdata.get("deck")
-        const userquestion=formdata.get("qu")
-        const useranswer=formdata.get("answer")
-        const carddificalty=formdata.get("deficult")
-        const option1=formdata.get("op1")
-        const option2=formdata.get("op2")
-        const option3=formdata.get("op3")
-        const option4=formdata.get("op4")
-
-        const userdata=await fetch("http://localhost:3000/api/addFlash",{
-            method:"POST",
-            headers:{
-                "content-type":"application/json"
-            },
-            body:JSON.stringify({
-                question:userquestion,
-                Answer:useranswer,
-                document:deckc,
-                flashdificulty:carddificalty,
-                quizop1:option1,
-                quizop2:option2,
-                quizop3:option3,
-                quizop4:option4
-            })
-
-        })
-
-        if(userdata.ok){
-
-            const data=await userdata.json()
-            console.log(data)
-        }
-        else{
-            throw new Error("Failed to create flashcard")
-        }
-
-        
-    }
-    catch(error){
-        
-        console.log(error)
-        return
-    }
-    
-    redirect(`/flashcards/${formdata.get("deck")}`)
-}
-
-
-
+import AddNewFlashcards from "@/app/actions/flashcardaction"
 
 
 const Add=async({params})=>{
@@ -63,7 +6,7 @@ const Add=async({params})=>{
     const {deck}=await params
 
     return(
-        <form action={fetchdata }>
+        <form action={AddNewFlashcards }>
             <div className="flex flex-col justify-center items-center bg-gradient-to-r">
                 <div>
                     <div className="border-1 border-gray-300 flex flex-col px-5 py-10 m-20 rounded-2xl shadow-md" >

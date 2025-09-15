@@ -1,32 +1,10 @@
-async function CreateNewDeck(formData){
-    "use server"
-
-    try{
-
-        const DECKtitlte=formData.get("deckname")
-    
-        await fetch("http://localhost:3000/api/newdeck",{
-            method:"POST",
-            headers:{
-                "content-type":"application/json"
-            },
-            body:JSON.stringify({
-                title:DECKtitlte
-            })
-        })
-    }
-    catch(error){
-        console.log(error)
-
-    }
-}
-
+import ADDnewDeck from "../actions/DeckAction"
 
 const Create=()=>{
 
     return(
 
-        <form action={CreateNewDeck}>
+        <form action={ADDnewDeck}>
             <div className="flex flex-col h-screen justify-center items-center">
                 <div className="border-0 shadow-lg bg-white p-5">
                     <div className="flex justify-between mb-3">
