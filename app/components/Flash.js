@@ -26,7 +26,6 @@ const Flash=({xx})=>{
                  </div>
 
                 <div className=" absolute inset-0 border bg-gradient-to-br from-violet-500 to-purple-400 flex justify-center items-center font-semibold text-xl border-gray-300 rounded-xl shadow-sm p-4 backface-hidden rotate-y-180 text-white "  >{xx.answer}</div>
-
             </div>
 
         </div>

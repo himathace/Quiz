@@ -17,54 +17,12 @@ const use=()=>{
     return(
 
         <div className="flex flex-col">
-            
-            {/* <div className="flex justify-between items-center bg-gradient-to-r  p-3 border bg-white border-gray-300 ">
-    
-                <div className="flex gap-x-3 items-center">
-
-                    <BookOpen className="w-12 h-12 p-2 rounded-xl bg-purple-500" color="white"></BookOpen>   
-                    <div>
-                        <h1 className="text-2xl bg-gradient-to-r text-black font-bold">FlashMaster</h1>
-                        <p className="text-sm text-gray-500">Work smater Not Harder</p>
-                    </div>
-                </div>
-                <div className="flex  gap-x-3" >
-
-                    <div className="flex mr-96 gap-x-5 items-center">
-                        <Link href={`/flashcards/${myuser._id}`}>
-                            <label className="text-black hover:text-purple-600 cursor-pointer font-light">Study Mode</label>
-                        </Link>
-                        <Link href={`/flashcards/${myuser._id}/quiz`}>
-                            <label className="text-gray-500 hover:text-purple-600 cursor-pointer font-light">Quiz Mode</label>
-                        </Link>
-                    </div>
-                    <div>
-                        <Link href={`/flashcards/${myuser._id}/add`}>
-                            <button className="transition-colors duration-300 w-full text-center border  border-gray-300 flex gap-x-2 cursor-pointer font-medium text-black  p-2 hover:bg-purple-500  rounded-lg hover:text-white b-8">
-                                <Plus></Plus>
-                                Add New Flashcard
-                            </button>
-                        </Link>
-                    </div>
-
-                </div>
-    
-            </div> */}
-
-            <div className="flex justify-center gap-x-3 pt-5 ">
-                <p className="flex items-center text-white bg-purple-500 p-2 rounded-xl"><BookOpen size={25}></BookOpen></p>
-                <h1 className="text-3xl font-bold text-from-violet-500 to-purple-400 flex items-center">QuizMaster</h1>
-            </div>
-            <p className="flex justify-center text-md text-gray-600 mb-5">
-                Test your knowledge with our interactive quiz platform
-            </p>
-
             <div className="flex gap-x-5 items-center justify-center">
                 <Link href={`/flashcards/${myuser._id}`}>
-                    <label className="text-black hover:text-purple-600 cursor-pointer text-sm">Study Mode</label>
+                    <label className="text-black hover:text-purple-600 cursor-pointer font-light text-sm">Study Mode</label>
                 </Link>
                 <Link href={`/flashcards/${myuser._id}/quiz`}>
-                    <label className="text-gray-500 hover:text-purple-600 cursor-pointer text-sm">Quiz Mode</label>
+                    <label className="text-gray-500 hover:text-purple-600 cursor-pointer font-light text-sm">Quiz Mode</label>
                 </Link>
             </div>
 
