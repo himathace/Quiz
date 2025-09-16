@@ -2,6 +2,7 @@ import { Edit, Trash2, Plus, Play, Delete } from "lucide-react"
 import Displaycard from "./components/displaycard"
 import Newdeck from "./components/newdeck"
 import Link from "next/link"
+import makeuserlogout from "./actions/logoutAction"
 
 const fetchdata=async ()=>{
 
@@ -16,6 +17,7 @@ const fetchdata=async ()=>{
     return []
   }
 }
+
 
 
 const Home=async ()=>{
@@ -58,7 +60,9 @@ const Home=async ()=>{
               <p className="font-light">Continue your learning journey</p>
           </div>
           <div className="flex items-center">
-            <button className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white w-40 rounded-xl h-10">Create New Deck</button>
+            <form action={makeuserlogout}>
+              <button className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white w-40 rounded-xl h-10 ">logout</button>
+            </form>
           </div>
         </div>
 

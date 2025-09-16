@@ -2,6 +2,8 @@
 
 import Deck from "@/models/Deck";
 import connect from "@/lib/mongodb";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export default async function ADDnewDeck(formdata){
 
@@ -10,5 +12,7 @@ export default async function ADDnewDeck(formdata){
     const newdeck=new Deck({title:deckname,cards:[]})
     await newdeck.save()
     console.log("deck add")
+    revalidatePath("/")
+    redirect("/")
 
 }
