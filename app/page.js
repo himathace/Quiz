@@ -2,7 +2,6 @@ import { Edit, Trash2, Plus, Play, Delete,BookOpen } from "lucide-react"
 import Displaycard from "./components/displaycard"
 import Newdeck from "./components/newdeck"
 import Link from "next/link"
-import makeuserlogout from "./actions/logoutAction"
 import { Clock2 } from 'lucide-react';
 import { Target } from 'lucide-react';
 import { TrendingUp } from 'lucide-react';
@@ -34,63 +33,29 @@ const Home=async ()=>{
   
     <div className="h-screen">
 
-        <nav className="flex justify-between items-center p-6">
-          
-          <div className="flex-1"></div>
-          
-
-          <div className="flex items-center space-x-3">
-            <div className="flex items-center justify-center w-10 h-10 bg-purple-500 rounded-xl">
-              <BookOpen size={25} className="text-white" />
-            </div>
-            <div>
-              <h1 className="text-3xl font-bold text-black">
-                QuizMaster
-              </h1>
-              <p className="text-sm text-gray-600">
-                Test your knowledge with our interactive quiz platform
-              </p>
-            </div>
-          </div>
-
-          {/* Right side user info and logout */}
-          <div className="flex items-center space-x-6 flex-1 justify-end">
-            <div className="text-right">
-              <p className="text-sm text-gray-500">Welcome back</p>
-              <p className="font-medium text-gray-900 flex justify-center">username</p>
-            </div>
-            <form action={makeuserlogout}>
-              <button className="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white px-6 py-2 rounded-lg transition-all duration-200 font-medium">
-                Logout
-              </button>
-            </form>
-          </div>
-
-        </nav>
-  
-        
 
         <div className="grid grid-cols-4 mx-10 my-10 gap-x-10">
 
-          <div className="h-48 rounded-xl shadow-md border p-5 border-gray-200 ">
+          <div className="h-48 rounded-xl shadow-md border border-gray-200 p-5 hover:shadow-xl hover:shadow-black-300 transition-all duration-300 ease-in-out">
+            
             <BookOpen className="bg-purple-100 p-1 rounded-md text-purple-600 mb-3" size={40}></BookOpen>
             <p className="text-xl font-bold mb-3">24</p>
             <p className="text-sm text-gray-500">Active Flashcard Sets</p>
             <p className="text-sm text-gray-700">Total Decks</p>
           </div>
-          <div className="h-48 rounded-xl shadow-md border p-5 border-gray-200 ">
+          <div className="h-48 rounded-xl shadow-md border p-5 border-gray-200 hover:shadow-xl hover:shadow-black-300 transition-all duration-300 ease-in-out">
             <Clock2 className="bg-green-100 p-1 rounded-md text-green-600 mb-3" size={40}></Clock2>
             <p className="text-xl font-bold mb-3">24</p>
             <p className="text-sm text-gray-500">Active Flashcard Sets</p>
             <p className="text-sm text-gray-700">Total Decks</p>
           </div>
-          <div className="h-48 rounded-xl shadow-md border p-5 border-gray-200 ">
+          <div className="h-48 rounded-xl shadow-md border p-5 border-gray-200 hover:shadow-xl hover:shadow-black-200 transition-all duration-300 ease-in-out">
             <Target className="bg-orange-100 p-1 rounded-md text-orange-600 mb-3" size={40}></Target>
             <p className="text-xl font-bold mb-3">24</p>
             <p className="text-sm text-gray-500">Active Flashcard Sets</p>
             <p className="text-sm text-gray-700">Total Decks</p>
           </div>
-          <div className="h-48 rounded-xl shadow-md border p-5 border-gray-200 ">
+          <div className="h-48 rounded-xl shadow-md border p-5 border-gray-200 hover:shadow-xl hover:shadow-black-200 transition-all duration-300 ease-in-out">
             <TrendingUp className="bg-red-100 p-1 rounded-md text-red-600 mb-3" size={40}></TrendingUp>
             <p className="text-xl font-bold mb-3">24</p>
             <p className="text-sm text-gray-500">Active Flashcard Sets</p>

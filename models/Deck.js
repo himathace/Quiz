@@ -21,6 +21,7 @@ const displaydeck=new mongoose.Schema({
     title:String,
     cards:[cardsschema],
     Description:String,
-})
+    category:String
+},{timestamps:true})
 
 export default mongoose.models.Deck || mongoose.model("Deck",displaydeck)

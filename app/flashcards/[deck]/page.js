@@ -44,14 +44,27 @@ const use=()=>{
                 {
 
                     !myuser || !myuser.cards ? 
-                        <h1 className="p-4 mb-10">Loading...</h1>:
-                            myuser.cards.map((va)=>{
+
+                       <div className="flex  flex-col justify-center items-center col-span-4 min-h-[200px]  text-sm font-semibold">
+                            <p>Loding FlashCards</p>
+                            <div className="flex items-center gap-2 h-10">
+                                <div className="w-3 h-3 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: "0s" }}></div>
+                                <div className="w-3 h-3 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: "0.15s" }}></div>
+                                <div className="w-3 h-3 bg-fuchsia-400 rounded-full animate-bounce" style={{ animationDelay: "0.3s" }}></div>
+                            </div>
+                        </div>
+                        
+                        :
+
+                        <>
+                            {myuser.cards.map((va)=>{
                                 return <Flash xx={va}  key={va._id} />
-                            })
+                            })}
+                            <Link href={`/flashcards/${myuser._id}/add`}>
+                                <Add />
+                            </Link>
+                        </>
                 }
-                <Link href={`/flashcards/${myuser._id}/add`}>
-                    <Add />
-                </Link>
             </div>
         </div>
 
