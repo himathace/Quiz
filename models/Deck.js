@@ -19,7 +19,8 @@ const cardsschema=new mongoose.Schema({
 
 const displaydeck=new mongoose.Schema({
     title:String,
-    cards:[cardsschema]
+    cards:[cardsschema],
+    Description:String,
 })
 
 export default mongoose.models.Deck || mongoose.model("Deck",displaydeck)
