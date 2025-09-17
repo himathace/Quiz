@@ -9,7 +9,7 @@ const Add=async({params})=>{
         <form action={AddNewFlashcards }>
             <div className="flex flex-col justify-center items-center bg-gradient-to-r">
                 <div>
-                    <div className="border-1 border-gray-300 flex flex-col px-5 py-10 m-20 rounded-2xl shadow-md" >
+                    <div className="border-1 border-gray-300 flex flex-col px-5 py-10 mt-10 rounded-2xl shadow-md" >
                     <h1 className="text-center text-2xl font-semibold mb-10">Design Your Flashcard</h1>
 
                         <label className="mb-2 font-semibold">Question</label>
@@ -21,10 +21,10 @@ const Add=async({params})=>{
                         <input type="text" name="answer" placeholder="Enter Your answer" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-5 "></input>
 
                         <label className="mb-2 font-semibold">Answer Options</label>
-                        <input type="text" placeholder="option 1" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-2 " name="op1"></input>
-                        <input type="text" placeholder="option 2" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-2 " name="op2"></input>
-                        <input type="text" placeholder="option 3" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-2 " name="op3"></input>
-                        <input type="text" placeholder="option 4" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl mb-5 " name="op4"></input>
+                        <input type="text" placeholder="option 1" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-500 rounded-xl mb-2 " name="op1"></input>
+                        <input type="text" placeholder="option 2" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-500 rounded-xl mb-2 " name="op2"></input>
+                        <input type="text" placeholder="option 3" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-500 rounded-xl mb-2 " name="op3"></input>
+                        <input type="text" placeholder="option 4" className="w-full p-2 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-500 rounded-xl mb-5 " name="op4"></input>
                         <label className="mb-2 font-semibold">Deficulty</label>
                         <select className="h-10 border border-gray-300 focus:ring-1 focus:outline-none focus:border-purple-700 rounded-xl pl-2" name="deficult">
                             <option>Easy</option>

@@ -3,6 +3,7 @@
 import Deck from "@/models/Deck";
 import connect from "@/lib/mongodb";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 export default async function AddNewFlashcards(formdata){
 
@@ -23,6 +24,7 @@ export default async function AddNewFlashcards(formdata){
     
     )
     console.log("card added")
+    revalidatePath(`/flashcards/${deckc}`)
     redirect(`/flashcards/${deckc}`)
 
 }

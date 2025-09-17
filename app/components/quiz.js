@@ -14,6 +14,13 @@ const Displayquiz=()=>{
     const [score,setscore]=useState(0)
     const [progress,setprogress]=useState(0)
 
+    function resetquiz(){
+        setobject(0)
+        setselect(null)
+        setscore(0)
+        setprogress(0)
+    }
+
     function handleclick(option){
         setselect(option)
 
@@ -65,7 +72,7 @@ const Displayquiz=()=>{
                     }
                 </p>
                 <div className="flex justify-center gap-x-5">
-                    <button className="bg-purple-500 p-2 w-40 rounded-md text-white font-semibold cursor-pointer hover:bg-purple-700 transition-all duration-300">Try Again</button>
+                    <button className="bg-purple-500 p-2 w-40 rounded-md text-white font-semibold cursor-pointer hover:bg-purple-700 transition-all duration-300" onClick={resetquiz}>Try Again</button>
                     <button className="bg-purple-100 p-2  w-40 rounded-md text-black font-semibold cursor-pointer hover:bg-purple-300 transition-all duration-300">Share Score</button>
                 </div>
 

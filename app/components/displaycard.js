@@ -4,6 +4,22 @@ import { Edit, Trash2, Plus, Play, Delete, BookOpen, Users } from "lucide-react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 
+function timeAgo(dateString) {
+  const date = new Date(dateString);
+  const now = new Date();
+  const diffMs = now - date;
+  const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  const diffMonths = Math.floor(diffDays / 30);
+
+  if (diffHours < 24) {
+    return diffHours <= 1 ? "1 hour ago" : `${diffHours} hours ago`;
+  } else if (diffDays < 30) {
+    return diffDays === 1 ? "1 day ago" : `${diffDays} days ago`;
+  } else {
+    return diffMonths === 1 ? "1 month ago" : `${diffMonths} months ago`;
+  }
+}
 
 const Displaycard=({val,index})=>{
 
@@ -41,7 +57,7 @@ const Displaycard=({val,index})=>{
                   <BookOpen size={16} className="text-gray-600"></BookOpen>
                   <p className="text-sm text-gray-600">{val.cards.length} cards</p>
                 </div>
-                <p className="text-sm text-gray-600">2 days ago</p>
+                <p className="text-sm text-gray-600">{timeAgo(val.createdAt)}</p>
 
               </div>
               
