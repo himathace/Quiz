@@ -15,7 +15,7 @@ export function Provider({mydeck,children}){
     
             try{
     
-                const userdata=await fetch("/api/car",{
+                const userdata=await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/car`,{
                     method:"post",
                     headers:{
                         "content-type":"application/json"

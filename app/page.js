@@ -12,7 +12,7 @@ const fetchdata=async ()=>{
 
   try{
 
-    const userdata=await fetch("/api/displaydeck")
+    const userdata=await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/displaydeck`)
     const data=await userdata.json()
     return data.message
   }
