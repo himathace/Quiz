@@ -12,7 +12,7 @@ const fetchdata=async ()=>{
 
   try{
 
-    const userdata=await fetch("http://localhost:3000/api/displaydeck")
+    const userdata=await fetch("/api/displaydeck")
     const data=await userdata.json()
     return data.message
   }

@@ -15,7 +15,7 @@ export function Provider({mydeck,children}){
     
             try{
     
-                const userdata=await fetch("http://localhost:3000/api/car",{
+                const userdata=await fetch("/api/car",{
                     method:"post",
                     headers:{
                         "content-type":"application/json"
