@@ -5,6 +5,8 @@ import Link from "next/link"
 import { Clock2 } from 'lucide-react';
 import { Target } from 'lucide-react';
 import { TrendingUp } from 'lucide-react';
+// Make this page dynamic to avoid build-time fetch issues
+export const dynamic = 'force-dynamic'
 
 
 
