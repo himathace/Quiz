@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# QuizMaster
 
-## Getting Started
+QuizMaster is a simple, mordern and interactive application designed to test knowledge with fun quizzes. Users can answer multiple-choice questions, track their scores, and improve their learning in an engaging way. It’s lightweight, easy to use, and a great project for exploring concepts like state management, UI design, and dynamic data handling.
 
-First, run the development server:
+## Features
+
+- Two Modes: Switch between Study Mode (flip cards) and Quiz Mode (take quizzes).
+- Interactive Flashcards: Simple and clean UI to view and flip cards.
+- Score Tracking: Evaluate performance in quiz mode.
+- Fast & Responsive: Built with Next.js for a smooth and responsive experience.
+- Modern UI: Clean design with Tailwind CSS (optional if you’re using it).
+
+## Installation
+
+Clone the repository and install dependencies
+
+
+1. Clone the repo:
+
+```bash
+git clone https://github.com/himathace/quiz.git
+cd quiz
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+4. add Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+- Create a .env file in the server folder based on .env.example.
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+MONGO_URI=your_mongodb_connection_string
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Open http://localhost:3000
+ in your browser to see the app.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Screenshots
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![Dashboard](./assets/quizdash.png)
+![deck](./assets/quizdeck.png)
+![flashcards](./assets/flash.png)
+![flips](./assets/flip.png)
+![flashcardsadd](./assets/flashadd.png)
+![home](./assets/quizhome.png)
+![q1](./assets/q1.png)
+![q1ans](./assets/q1ans.png)
+![q2](./assets/q2.png)
+![q2ans](./assets/q2ans.png)
+![q3](./assets/q3.png)
+![q3ans](./assets/q3ans.png)
+![q4](./assets/q4.png)
+![q4ans](./assets/q3ans.png)
+![try](./assets/try.png)
+
+
+## Live Demo
+
+- Check out the deployed app here  [QuizMaster](https://quiz-two-blush.vercel.app/)
+
+## Tech Stack
+
+- Frontend Framework: Next.js
+- Styling: Tailwind CSS
+- State Management: React Hooks / Context API
+- Deployment: Vercel
+
+
+## Contributing
+
+Contributions are welcome! Please open an issue first to discuss what you’d like to change.
+
+Steps:
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/YourFeature`
+3. Commit your changes: `git commit -m 'Add your message'`
+4. Push to the branch: `git push origin feature/YourFeature`
+5. Open a pull request
+
+## Author
+
+- Himath Dewmika– [@himathace](https://github.com/himathace)
+
+
