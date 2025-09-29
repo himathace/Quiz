@@ -68,10 +68,6 @@ MONGO_URI=your_mongodb_connection_string
 ![try](./assets/try.png)
 
 
-## Live Demo
-
-- Check out the deployed app here  [QuizMaster](https://quiz-two-blush.vercel.app/)
-
 ## Tech Stack
 
 - Frontend Framework: Next.js
