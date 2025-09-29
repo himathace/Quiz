@@ -67,6 +67,10 @@ MONGO_URI=your_mongodb_connection_string
 ![q4ans](./assets/q3ans.png)
 ![try](./assets/try.png)
 
+## Live Demo
+
+- Check out the deployed app here  [QuizMaster](https://quiz-two-blush.vercel.app/)
+
 
 ## Tech Stack
 

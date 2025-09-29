@@ -18,11 +18,11 @@ export default async function AddNewFlashcards(formdata){
     const option3=formdata.get("op3")
     const option4=formdata.get("op4")
 
-    await Deck.findByIdAndUpdate(
-        deckc,
-        {$push:{cards:{quiz:userquestion,answer:useranswer,deficulty:carddificalty,options:[option1,option2,option3,option4]}}}
+    // await Deck.findByIdAndUpdate(
+    //     deckc,
+    //     {$push:{cards:{quiz:userquestion,answer:useranswer,deficulty:carddificalty,options:[option1,option2,option3,option4]}}}
     
-    )
+    // )
     console.log("card added")
     revalidatePath(`/flashcards/${deckc}`)
     redirect(`/flashcards/${deckc}`)

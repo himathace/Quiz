@@ -13,8 +13,8 @@ export default async function ADDnewDeck(formdata){
         const deckname=formdata.get("deckname")
         const description=formdata.get("description")
         const select=formdata.get("drop")
-        const newdeck=new Deck({title:deckname,cards:[],Description:description,category:select})
-        await newdeck.save()
+        // const newdeck=new Deck({title:deckname,cards:[],Description:description,category:select})
+        // await newdeck.save()
         console.log("data saved",newdeck)
     }
     catch(error){
