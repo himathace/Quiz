@@ -1,112 +1,122 @@
-import { Edit, Trash2, Plus, Play, Delete,BookOpen } from "lucide-react"
-import Displaycard from "./components/displaycard"
-import Newdeck from "./components/newdeck"
-import Link from "next/link"
-import { Clock2 } from 'lucide-react';
-import { Target } from 'lucide-react';
+import { Brain } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
+import { Zap } from 'lucide-react';
 import { TrendingUp } from 'lucide-react';
-// Make this page dynamic to avoid build-time fetch issues
-export const dynamic = 'force-dynamic'
+import { CircleCheck } from 'lucide-react';
 
 
 
-const fetchdata=async ()=>{
-
-  try{
-
-    const userdata=await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/displaydeck`)
-    const data=await userdata.json()
-    return data.message
-  }
-  catch(error){
-    console.log(error)
-    return []
-  }
-}
 
 
 
-const Home=async ()=>{
+export default function Dashboard(){
+  return(
+    <div className="bg-purple-100">
 
-  const date=await fetchdata()
-
-
-  return (
-  
-    <div className="h-screen">
-
-        <div className="flex justify-center gap-x-3 pt-5 ">
-            <p className="flex items-center text-white bg-purple-500 p-2 rounded-xl"><BookOpen size={25}></BookOpen></p>
-            <h1 className="text-3xl font-bold text-from-violet-500 to-purple-400 flex items-center">QuizMaster</h1>
+      <div className="h-screen flex flex-col justify-center items-center">
+        <h1 className="text-7xl font-bold">Master Any Subject With</h1>
+        <h1 className="text-7xl font-bold bg-gradient-to-r  from-purple-500  to-fuchsia-500  bg-clip-text text-transparent" >Smart Flashcards</h1>
+        <p className="pt-5 text-xl text-gray-500">Transform your learning expreience with AI-powerd flashcards.study smarter,retain better,and achive your goles faster</p>
+        <div className="mt-5">
+          <div className="flex gap-x-5">
+            <button className=" bg-gradient-to-r  from-purple-600  to-purple-700 px-10 py-2 text-white font-semibold rounded-xl">Start Learning Free</button>
+            <button className="border border-black px-10  py-2 font-semibold rounded-xl">See How It Works</button>
+          </div>
         </div>
-        <p className="flex justify-center text-md text-gray-600 mb-3">
-            Test your knowledge with our interactive quiz platform
-        </p>
+      </div>
 
-        <div className="grid grid-cols-4 mx-10 my-10 gap-x-10">
+      <div className="h-screen bg-purple-50 flex flex-col items-center justify-center">
 
-          <div className="h-48 rounded-xl shadow-md border border-gray-200 p-5 hover:shadow-xl hover:shadow-black-300 transition-all duration-300 ease-in-out">
+        <div className="flex flex-col items-center">
+          <p className="text-5xl font-bold">Everything You Need to <span className='bg-gradient-to-r  from-purple-500  to-fuchsia-600 bg-clip-text text-transparent'>Excel</span> </p>
+          <p className="mt-3 text-gray-400 text-xl">Powerful Features Designed To Make Learning Engaging And Effective</p>
+        </div>
+        <div className="flex gap-x-5 px-15 mt-20">
+          <div className="shadow-md bg-white p-5 rounded-xl">
+            <p><Brain className=' bg-gradient-to-r  from-purple-600  to-fuchsia-600 text-white p-2 rounded-xl' size={40}></Brain></p>
+            <p className='mt-3 text-xl font-semibold'>AI-Powered</p>
+            <p className='mt-2 text-md text-gray-600'>Smart algorithms adapt to your learning pace and style</p>
+          </div>
+          <div className="shadow-md bg-white p-5 rounded-xl">
+            <p><Sparkles className='bg-gradient-to-r  from-purple-600  to-fuchsia-600 text-white p-2 rounded-xl' size={40}></Sparkles></p>
+            <p className='mt-3 text-xl font-semibold'>Interactive Cards</p>
+            <p className='mt-2 text-md text-gray-600'>Engaging flashcards with rich media and animations</p>
+          </div>
+          <div className="shadow-md bg-white p-5 rounded-xl">
+            <p><Zap className='bg-gradient-to-r  from-purple-600  to-fuchsia-600 text-white p-2 rounded-xl' size={40}></Zap></p>
+            <p className='mt-3 text-xl font-semibold'>Quick Reviews</p>
+            <p className='mt-2 text-md text-gray-600'>Efficient spaced repetition for maximum retention</p>
+          </div>
+          <div className="shadow-md bg-white p-5 rounded-xl">
+            <p><TrendingUp className='bg-gradient-to-r  from-purple-600  to-fuchsia-600 text-white p-2 rounded-xl' size={40}></TrendingUp></p>
+            <p className='mt-3 text-xl font-semibold'>Track Progress</p>
+            <p className='mt-2 text-md text-gray-600'>Detailed analytics to monitor your improvement</p>
+          </div>
+        </div>
+        
+      </div>
+
+      <div className='h-screen px-15 flex flex-col items-center justify-center'>
+
+        <div className='flex'>
+            <div>
+              <p className='text-5xl font-bold'>Why Students Love Our Platform</p>
+              <p className='text-xl mt-3 text-gray-500'>Join thousands of learners who have transformed their <br></br> study habits and achieved remarkable results.</p>
+
+              <div className='flex gap-x-3 mt-5'>
+                <CircleCheck className='text-purple-500'></CircleCheck>
+                <p className='text-xl font-semibold'>Create unlimited flashcard decks</p>
+              </div>
+              <div className='flex gap-x-3 mt-2'>
+                <CircleCheck className='text-purple-500'></CircleCheck>
+                <p className='text-xl font-semibold'>Study anywhere, anytime</p>
+              </div>
+              <div className='flex gap-x-3 mt-2'>
+                <CircleCheck className='text-purple-500'></CircleCheck>
+                <p className='text-xl font-semibold'>Spaced repetition algorithm</p>
+              </div>
+              <div className='flex gap-x-3 mt-2'>
+                <CircleCheck className='text-purple-500'></CircleCheck>
+                <p className='text-xl font-semibold'>Share decks with friends</p>
+              </div>
             
-            <BookOpen className="bg-purple-100 p-1 rounded-md text-purple-600 mb-3" size={40}></BookOpen>
-            <p className="text-xl font-bold mb-3">24</p>
-            <p className="text-sm text-gray-500">Active Flashcard Sets</p>
-            <p className="text-sm text-gray-700">Total Decks</p>
+            </div>
+
+            <div className='bg-white shadow-md p-7 w-3/6 rounded-xl'>
+              <p className='text-6xl font-bold text-purple-500'>98%</p>
+              <p className='text-xl font-semibold mt-2'>Success Rate</p>
+              <p className='text-md text-gray-700 mt-2'>Students report improved grades and confidence</p>
+              <hr className='text-gray-300 mt-5 mb-5'></hr>
+              <div className='flex justify-between '>
+                <p className='text-gray-500'>Active Users</p>
+                <p className='font-bold'>50K+</p>
+              </div>
+              <div className='flex justify-between mt-2'>
+                <p className='text-gray-500'>Flashcards Created</p>
+                <p className='font-bold'>2M+</p>
+              </div>
+              <div className='flex justify-between mt-2'>
+                <p className='text-gray-500'>Study Sessions</p>
+                <p className='font-bold'>10M+</p>
+              </div>
+            </div>
           </div>
-          <div className="h-48 rounded-xl shadow-md border p-5 border-gray-200 hover:shadow-xl hover:shadow-black-300 transition-all duration-300 ease-in-out">
-            <Clock2 className="bg-green-100 p-1 rounded-md text-green-600 mb-3" size={40}></Clock2>
-            <p className="text-xl font-bold mb-3">24</p>
-            <p className="text-sm text-gray-500">Active Flashcard Sets</p>
-            <p className="text-sm text-gray-700">Total Decks</p>
-          </div>
-          <div className="h-48 rounded-xl shadow-md border p-5 border-gray-200 hover:shadow-xl hover:shadow-black-200 transition-all duration-300 ease-in-out">
-            <Target className="bg-orange-100 p-1 rounded-md text-orange-600 mb-3" size={40}></Target>
-            <p className="text-xl font-bold mb-3">24</p>
-            <p className="text-sm text-gray-500">Active Flashcard Sets</p>
-            <p className="text-sm text-gray-700">Total Decks</p>
-          </div>
-          <div className="h-48 rounded-xl shadow-md border p-5 border-gray-200 hover:shadow-xl hover:shadow-black-200 transition-all duration-300 ease-in-out">
-            <TrendingUp className="bg-red-100 p-1 rounded-md text-red-600 mb-3" size={40}></TrendingUp>
-            <p className="text-xl font-bold mb-3">24</p>
-            <p className="text-sm text-gray-500">Active Flashcard Sets</p>
-            <p className="text-sm text-gray-700">Total Decks</p>
-          </div>
-          
+        
+
+      </div>
+
+      <div className='pt-30 pb-30 flex items-center justify-center bg-white px-15'>
+
+        <div className='bg-gradient-to-r from-purple-600 via-purple-500 to-purple-600
+
+ w-full rounded-3xl h-80 flex flex-col items-center justify-center'>
+          <p className='text-5xl font-bold text-white'>Ready to Transform Your Learning?</p>
+          <p className='text-xl text-white font-semibold mt-3'>Join thousands of learners who are mastering new skills every day</p>
+          <button className='mt-3 h-12 font-semibold text-black bg-white rounded-xl px-12'>Get Started Now</button>
         </div>
-  
-        <div className="flex justify-between  mx-10 mb-5">
-
-          <div>
-              <h1 className="text-2xl text-black font-bold">Your Flashcard Decks</h1>
-              <p className="font-light">Continue your learning journey</p>
-          </div>
-
-          
-          <div className="flex items-center">
-            <Link href={"/createdeck"}>
-              <button className="border-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white  font-medium pr-6 pl-4 py-2 rounded-lg transition-all duration-200 cursor-pointer flex gap-x-3" >
-                <Plus></Plus>
-                Create New Deck
-              </button>
-            </Link>
-          </div>
-        </div>
-
-        <div className="mx-10 grid grid-cols-3 gap-5">
-
-          {
-            date.map((dis,index)=>{
-              return <Displaycard val={dis} key={dis._id} index={index} />
-            })
-          }
-
-        </div>
+      </div>
 
 
     </div>
-  
-  
-  
-  );
+  )
 }
-  
-export default Home
