@@ -3,6 +3,7 @@ import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials";
 import user from "@/models/user";
+import connect from "@/lib/mongodb";
 
 
 export const authoptions={
@@ -12,16 +13,25 @@ export const authoptions={
         CredentialsProvider({
             name:"credentials",
             async authorize(credentals){
+                try{
 
-                const useremail=await user.findOne({email:credentals.email})
-                if(!useremail){
+                    await connect()
+                    const useremail=await user.findOne({email:credentals.email})
+                    console.log(useremail)
+                    if(!useremail){
+                        return null
+                    }
+    
+                    if(useremail.password!==credentals.password){
+                        return null
+                    }
+                    return {name:useremail.username,email:useremail.email}
+                }
+                catch(error){
+                    console.error("auth error")
                     return null
                 }
 
-                if(useremail.password!==credentals.password){
-                    return null
-                }
-                return {user:useremail.username}
             }
         }),
     ],

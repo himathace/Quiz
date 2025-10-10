@@ -23,7 +23,7 @@ export default function Login(){
             alert("invalid credentals")
         }
         else{
-            window.location.href="/"
+            window.location.href="/dashboard"
         }
 
 

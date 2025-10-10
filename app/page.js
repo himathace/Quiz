@@ -3,7 +3,7 @@ import { Sparkles } from 'lucide-react';
 import { Zap } from 'lucide-react';
 import { TrendingUp } from 'lucide-react';
 import { CircleCheck } from 'lucide-react';
-
+import Link from 'next/link';
 
 
 
@@ -19,7 +19,9 @@ export default function Dashboard(){
         <p className="pt-5 text-xl text-gray-500">Transform your learning expreience with AI-powerd flashcards.study smarter,retain better,and achive your goles faster</p>
         <div className="mt-5">
           <div className="flex gap-x-5">
-            <button className=" bg-gradient-to-r  from-purple-600  to-purple-700 px-10 py-2 text-white font-semibold rounded-xl">Start Learning Free</button>
+            <Link href={"/login"}>
+              <button className=" bg-gradient-to-r  from-purple-600 hover:cursor-pointer hover:opacity-85 transition-all duration-300 to-purple-700 px-10 py-2 text-white font-semibold rounded-xl">Start Learning Free</button>
+            </Link>
             <button className="border border-black px-10  py-2 font-semibold rounded-xl">See How It Works</button>
           </div>
         </div>
@@ -112,7 +114,9 @@ export default function Dashboard(){
  w-full rounded-3xl h-80 flex flex-col items-center justify-center'>
           <p className='text-5xl font-bold text-white'>Ready to Transform Your Learning?</p>
           <p className='text-xl text-white font-semibold mt-3'>Join thousands of learners who are mastering new skills every day</p>
-          <button className='mt-3 h-12 font-semibold text-black bg-white rounded-xl px-12'>Get Started Now</button>
+          <Link href={"/login"}>
+            <button className='mt-3 h-12 font-semibold text-black hover:cursor-pointer hover:opacity-80 transition-all duration-300 bg-white rounded-xl px-12'>Get Started Now</button>
+          </Link>
         </div>
       </div>
 
