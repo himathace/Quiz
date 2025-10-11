@@ -16,9 +16,16 @@ export const authoptions={
                 try{
 
                     await connect()
+                    if(credentals.email.length===0){
+                        return null
+                    }
                     const useremail=await user.findOne({email:credentals.email})
                     console.log(useremail)
                     if(!useremail){
+                        return null
+                    }
+
+                    if(credentals.password.length===0){
                         return null
                     }
     

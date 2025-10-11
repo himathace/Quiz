@@ -10,6 +10,7 @@ export default function Login(){
 
     const [email,setemail]=useState("")
     const [password,setpassword]=useState("")
+    const [error,seterror]=useState("")
 
     async function handlelogin(){
 
@@ -20,7 +21,7 @@ export default function Login(){
         })
 
         if(results.error){
-            alert("invalid credentals")
+            seterror("Invalid Username or Password")
         }
         else{
             window.location.href="/dashboard"
@@ -33,9 +34,12 @@ export default function Login(){
         
         <>
             <p className="text-sm font-semibold mt-7">Email</p>
-            <input type="text" className="border-gray-300 border rounded-lg mt-1 h-10 p-2 transition-all duration-300 focus:ring-2 focus:border-purple-500 focus:ring-purple-500 focus:outline-none" placeholder="You@example.com" onChange={(e)=>setemail(e.target.value)} value={email} ></input>
+            <input type="text" className={`border-gray-300 border ${error && "border-red-400"} rounded-lg mt-1 h-10 p-2 transition-all duration-300 focus:ring-2 focus:border-purple-500 focus:ring-purple-500 focus:outline-none`} placeholder="You@example.com" onChange={(e)=>setemail(e.target.value)} value={email} onFocus={()=>seterror("")} ></input>
             <p className="text-sm font-semibold mt-3">Password</p>
-            <input type="text" className="border border-gray-300 rounded-lg mt-1 h-10 p-2 transition-all duration-300 focus:ring-2 focus:border-purple-500 focus:ring-purple-500 focus:outline-none " placeholder="**********" onChange={(e)=>setpassword(e.target.value)} value={password}></input>
+            <input type="text" className={`border ${error && "border-red-400"} border-gray-300 rounded-lg mt-1 h-10 p-2 transition-all duration-300 focus:ring-2 focus:border-purple-500 focus:ring-purple-500 focus:outline-none `} placeholder="**********" onChange={(e)=>setpassword(e.target.value)} value={password} onFocus={()=>seterror("")}></input>
+            <div className="h-2 mt-1">
+                {error && <p className="text-red-500 text-xs">{error}</p>}
+            </div>
             <button className="bg-gradient-to-r from-purple-600 to-fuchsia-600  rounded-lg text-sm text-white mt-5 h-10 font-semibold" onClick={()=>handlelogin()}>Sign in</button>
         </>
     )
