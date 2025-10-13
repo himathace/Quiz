@@ -36,7 +36,7 @@ export default function Login(){
             <p className="text-sm font-semibold mt-7">Email</p>
             <input type="text" className={`border-gray-300 border ${error && "border-red-400"} rounded-lg mt-1 h-10 p-2 transition-all duration-300 focus:ring-2 focus:border-purple-500 focus:ring-purple-500 focus:outline-none`} placeholder="You@example.com" onChange={(e)=>setemail(e.target.value)} value={email} onFocus={()=>seterror("")} ></input>
             <p className="text-sm font-semibold mt-3">Password</p>
-            <input type="text" className={`border ${error && "border-red-400"} border-gray-300 rounded-lg mt-1 h-10 p-2 transition-all duration-300 focus:ring-2 focus:border-purple-500 focus:ring-purple-500 focus:outline-none `} placeholder="**********" onChange={(e)=>setpassword(e.target.value)} value={password} onFocus={()=>seterror("")}></input>
+            <input type="password" className={`border ${error && "border-red-400"} border-gray-300 rounded-lg mt-1 h-10 p-2 transition-all duration-300 focus:ring-2 focus:border-purple-500 focus:ring-purple-500 focus:outline-none `} placeholder="**********" onChange={(e)=>setpassword(e.target.value)} value={password} onFocus={()=>seterror("")}></input>
             <div className="h-2 mt-1">
                 {error && <p className="text-red-500 text-xs">{error}</p>}
             </div>
