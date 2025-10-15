@@ -15,7 +15,8 @@ export default async function ADDnewDeck(formdata){
         const select=formdata.get("drop")
         // const newdeck=new Deck({title:deckname,cards:[],Description:description,category:select})
         // await newdeck.save()
-        console.log("data saved",newdeck)
+        revalidatePath("/dashboard")
+        redirect("/dashboard")
     }
     catch(error){
         console.error("error saving data",error)
