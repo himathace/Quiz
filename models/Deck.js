@@ -18,6 +18,7 @@ const cardsschema=new mongoose.Schema({
 
 
 const displaydeck=new mongoose.Schema({
+    name:String,
     title:String,
     cards:[cardsschema],
     Description:String,

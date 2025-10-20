@@ -9,7 +9,6 @@ import { authoptions } from "../api/auth/[...nextauth]/route";
 import Pop from "../components/dashboardpopup";
 
 
-
 // Make this page dynamic to avoid build-time fetch issues
 export const dynamic = 'force-dynamic'
 
@@ -17,49 +16,67 @@ export const dynamic = 'force-dynamic'
 
 export default async function userdashboard() {
 
-  const userdata=await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/displaydeck`)
+  const session = await getServerSession(authoptions);
+
+  if(!session){
+    return(
+      <h1>Loading</h1>
+    )
+  }
+
+  const userdata=await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/displaydeck`,{
+    method:"POST",
+    headers:{
+      "content-type":"application/json"
+    },
+    body:JSON.stringify({
+      usersname:session.user.name
+    })
+  })
   const data=await userdata.json()
 
-  const session = await getServerSession(authoptions);
   
   return (
   
-    <div className="h-screen">
+    <div className="min-h-screen pb-10">
 
-        <div className="flex justify-center gap-x-3 pt-5 relative ">
+        <div className="flex flex-col justify-center gap-x-3 pt-5 relative">
+
+          <div className="flex justify-center gap-x-2">
             <p className="flex items-center text-white bg-purple-500 p-2 rounded-xl"><BookOpen size={25}></BookOpen></p>
             <h1 className="text-3xl font-bold text-from-violet-500 to-purple-400 flex items-center">QuizMaster</h1>
-            <Pop></Pop>
+          </div>
+          <p className="flex justify-center text-md text-gray-600 mb-3">
+              Test your knowledge with our interactive quiz platform
+          </p>
+          <Pop></Pop>
         </div>
-        <p className="flex justify-center text-md text-gray-600 mb-3">
-            Test your knowledge with our interactive quiz platform
-        </p>
-
+        <hr></hr>
         <div className="mx-10">
-          <p className="text-3xl font-bold">Welcome back,{session.user.name}</p>
+          <p className="text-3xl font-bold mt-5">Welcome back,{session.user.name}</p>
           <p className="text-sm text-gray-600 mt-1  ">Test your knowledge with our interactive quiz platform</p>
         </div>
 
         <div className="grid grid-cols-4 mx-10 my-10 gap-x-10">
-          <div className="h-48 rounded-xl shadow-md border border-gray-200 p-5 hover:shadow-xl hover:shadow-black-300 transition-all duration-300 ease-in-out">
+          <div className="h-48 rounded-xl shadow-md border border-gray-200 p-5 hover:shadow-xl hover:shadow-black-300 transition-all duration-300 ease-in-out transform hover:scale-100 hover:-translate-y-1 ">
             <BookOpen className="bg-purple-100 p-1 rounded-md text-purple-600 mb-3" size={40}></BookOpen>
             <p className="text-xl font-bold mb-3">24</p>
             <p className="text-sm text-gray-500">Active Flashcard Sets</p>
             <p className="text-sm text-gray-700">Total Decks</p>
           </div>
-          <div className="h-48 rounded-xl shadow-md border p-5 border-gray-200 hover:shadow-xl hover:shadow-black-300 transition-all duration-300 ease-in-out">
+          <div className="h-48 rounded-xl shadow-md border p-5 border-gray-200 hover:shadow-xl hover:shadow-black-300 transition-all duration-300 ease-in-out  transform hover:scale-100 hover:-translate-y-1 ">
             <Clock2 className="bg-green-100 p-1 rounded-md text-green-600 mb-3" size={40}></Clock2>
             <p className="text-xl font-bold mb-3">24</p>
             <p className="text-sm text-gray-500">Active Flashcard Sets</p>
             <p className="text-sm text-gray-700">Total Decks</p>
           </div>
-          <div className="h-48 rounded-xl shadow-md border p-5 border-gray-200 hover:shadow-xl hover:shadow-black-200 transition-all duration-300 ease-in-out">
+          <div className="h-48 rounded-xl shadow-md border p-5 border-gray-200 hover:shadow-xl hover:shadow-black-200 transition-all duration-300 ease-in-out  transform hover:scale-100 hover:-translate-y-1 ">
             <Target className="bg-orange-100 p-1 rounded-md text-orange-600 mb-3" size={40}></Target>
             <p className="text-xl font-bold mb-3">24</p>
             <p className="text-sm text-gray-500">Active Flashcard Sets</p>
             <p className="text-sm text-gray-700">Total Decks</p>
           </div>
-          <div className="h-48 rounded-xl shadow-md border p-5 border-gray-200 hover:shadow-xl hover:shadow-black-200 transition-all duration-300 ease-in-out">
+          <div className="h-48 rounded-xl shadow-md border p-5 border-gray-200 hover:shadow-xl hover:shadow-black-200 transition-all duration-300 ease-in-out  transform hover:scale-100 hover:-translate-y-1 ">
             <TrendingUp className="bg-red-100 p-1 rounded-md text-red-600 mb-3" size={40}></TrendingUp>
             <p className="text-xl font-bold mb-3">24</p>
             <p className="text-sm text-gray-500">Active Flashcard Sets</p>
@@ -77,17 +94,22 @@ export default async function userdashboard() {
 
           
           <div className="flex items-center">
-            <CreateDeckDialog username={session.user.name}/>
+            <CreateDeckDialog/>
           </div>
         </div>
 
         <div className="mx-10 grid grid-cols-3 gap-5">
 
           {
+            data.message.length===0 ?
+              <h1>create a deck</h1>:
             data.message.map((dis,index)=>{
-              return <Displaycard val={dis} key={dis._id} index={index} />
+              return (
+                 <Displaycard val={dis} key={dis._id} index={index} />
+              )
             })
           }
+
 
         </div>
 

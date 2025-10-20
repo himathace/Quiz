@@ -3,6 +3,8 @@
 import { Edit, Trash2, Plus, Play, Delete, BookOpen, Users } from "lucide-react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
+import DeckDelete from "../actions/deletedeck";
+
 
 function timeAgo(dateString) {
   const date = new Date(dateString);
@@ -38,7 +40,7 @@ const Displaycard=({val,index})=>{
 
     return(
 
-        <div className="border border-gray-200 shadow-sm  hover:shadow-xl transition-shadow duration-300 rounded-xl h-96 flex flex-col">
+        <div className="border border-gray-200 shadow-sm  hover:shadow-xl transition-all duration-300 rounded-xl h-96 flex flex-col  ease-in-out transform hover:scale-100 hover:-translate-y-1 ">
 
           <div className={`h-2/6  ${selectedBgColor} flex justify-center items-center rounded-t-xl`}>
             <BookOpen size={40} className="text-white"></BookOpen>
@@ -48,7 +50,7 @@ const Displaycard=({val,index})=>{
 
               <div className="mb-2">
                 <p className="text-xl font-semibold text-black">{val.title}</p>
-                <p className="font-normal text-gray-500 text-sm line-clamp-1 mb-3">{val.Description}</p>
+                <p className="font-normal text-gray-500 text-sm line-clamp-1 mb-2">{val.Description}</p>
               </div>
 
               <div className="flex justify-between mb-2">
@@ -78,19 +80,20 @@ const Displaycard=({val,index})=>{
                 </div>
               </div>
 
-              <div className="mb-5 border border-gray-300 w-fit rounded-full text-xs p-1 font-semibold">
+              <div className="mb-3 border border-gray-300 w-fit rounded-full text-xs p-1 font-semibold">
                 <p>{val.category}</p>
               </div>
 
-              <div className="flex gap-x-3">
-                <Link href={`/flashcards/${val._id}`}>
-                  <button className="text-white text-sm flex  justify-center font-medium hover:cursor-pointer items-center gap-x-3 bg-gradient-to-r from-violet-500 to-purple-400 w-96 h-10 rounded-xl ">
+              <div className="flex justify-between gap-x-2">
+
+                <Link href={`/flashcards/${val._id}`} className="flex-1">
+                  <button className="text-white text-sm flex  justify-center font-medium hover:cursor-pointer items-center gap-x-3 bg-gradient-to-r from-violet-600 w-full to-purple-500 hover:opacity-90 transition-all duration-200  h-10 rounded-lg ">
                     <Play></Play>
                       Study Now
                   </button>
                 </Link>
-                <button className=" p-1 text-sm flex font-medium border border-gray-400  hover:cursor-pointer items-center gap-x-1 h-10  rounded-xl">
-                  <Users></Users>
+                <button className=" p-3 text-sm flex font-medium border hover:bg-purple-50 transition-all duration-200  border-gray-200  hover:cursor-pointer items-center gap-x-1 h-10  rounded-lg" onClick={()=>DeckDelete({userid:val._id})}>
+                  <Trash2 size={15}></Trash2>
                 </button>
               </div>
           </div>

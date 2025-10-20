@@ -2,10 +2,11 @@ import Deck from "@/models/Deck";
 import connect from "@/lib/mongodb";
 
 
-export async function GET (request){
+export async function POST (request){
     try{
         await connect()
-        const display=await Deck.find()
+        const body=await request.json()
+        const display=await Deck.find({name:body.usersname})
         return Response.json({message:display})
     }
     catch(error){

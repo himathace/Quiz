@@ -4,6 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {Popover,PopoverContent,PopoverTrigger} from "@/components/ui/popover"
 import { signOut } from "next-auth/react"
 import { useSession } from "next-auth/react";
+import { User } from "lucide-react";
 
 
 
@@ -24,9 +25,8 @@ export default  function Pop(){
 
         <Popover className="absolute">
             <PopoverTrigger asChild>
-            <Avatar className="absolute right-40">
-                <AvatarImage src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png" />
-                <AvatarFallback>CN</AvatarFallback>
+            <Avatar className="absolute flex w-10 h-10 justify-center items-center bottom-7 right-10 bg-purple-500 text-white">
+                <User size={20}></User>
             </Avatar>
             </PopoverTrigger>
             <PopoverContent>
