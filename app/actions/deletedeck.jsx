@@ -10,7 +10,7 @@ export default async function DeckDelete(params) {
     await Deck.findByIdAndDelete(params.userid)
     console.log("deck deleted")
     revalidatePath("/dashboard")
-    redirect("/dashboard")
+    return {success:true}
 
 
 

@@ -14,18 +14,14 @@ export default  function Pop(){
     const { data: session, status } = useSession();
 
     if(status==="loading"){
-        return(
-            <Avatar className="absolute right-40">
-                <AvatarFallback>...</AvatarFallback>
-            </Avatar>
-        )
+        return null
     }
 
     return(
 
         <Popover className="absolute">
             <PopoverTrigger asChild>
-            <Avatar className="absolute flex w-10 h-10 justify-center items-center bottom-7 right-10 bg-purple-500 text-white">
+            <Avatar className="absolute flex w-10 h-10 justify-center items-center bottom-7 right-10 border border-gray-300 bg-gray-100 text-black hover:bg-purple-500 hover:text-white transition-all duration-200">
                 <User size={20}></User>
             </Avatar>
             </PopoverTrigger>
@@ -35,7 +31,6 @@ export default  function Pop(){
             <hr className="m-2"></hr>
             <button className="text-sm text-red-600" onClick={()=>signOut({callbackUrl:"/"})}>log out</button>
             </PopoverContent>
-
         </Popover>
 
     )

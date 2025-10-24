@@ -4,6 +4,7 @@ import { Edit, Trash2, Plus, Play, Delete, BookOpen, Users } from "lucide-react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import DeckDelete from "../actions/deletedeck";
+import { toast } from "sonner";
 
 
 function timeAgo(dateString) {
@@ -25,6 +26,14 @@ function timeAgo(dateString) {
 
 const Displaycard=({val,index})=>{
 
+  async function DeKdelete() {
+    const data=await DeckDelete({userid:val._id})
+    if(data.success){
+      toast.error("Deck successfully deleted!")
+    }
+    
+  }
+
    const bgColors = [
         'bg-gradient-to-br from-purple-500 to-pink-500',
         'bg-gradient-to-br from-blue-500 to-cyan-500',
@@ -40,7 +49,7 @@ const Displaycard=({val,index})=>{
 
     return(
 
-        <div className="border border-gray-200 shadow-sm  hover:shadow-xl transition-all duration-300 rounded-xl h-96 flex flex-col  ease-in-out transform hover:scale-100 hover:-translate-y-1 ">
+        <div className=" bg-white  shadow transition-all duration-300 rounded-xl h-96 flex flex-col  ease-in-out transform hover:scale-100 hover:-translate-y-1 ">
 
           <div className={`h-2/6  ${selectedBgColor} flex justify-center items-center rounded-t-xl`}>
             <BookOpen size={40} className="text-white"></BookOpen>
@@ -87,12 +96,12 @@ const Displaycard=({val,index})=>{
               <div className="flex justify-between gap-x-2">
 
                 <Link href={`/flashcards/${val._id}`} className="flex-1">
-                  <button className="text-white text-sm flex  justify-center font-medium hover:cursor-pointer items-center gap-x-3 bg-gradient-to-r from-violet-600 w-full to-purple-500 hover:opacity-90 transition-all duration-200  h-10 rounded-lg ">
+                  <button className="text-white text-sm flex  justify-center font-medium hover:cursor-pointer items-center gap-x-3 bg-gradient-to-r from-purple-500 w-full to-fuchsia-500   transition-all duration-200  h-10 rounded-lg ">
                     <Play></Play>
                       Study Now
                   </button>
                 </Link>
-                <button className=" p-3 text-sm flex font-medium border hover:bg-purple-50 transition-all duration-200  border-gray-200  hover:cursor-pointer items-center gap-x-1 h-10  rounded-lg" onClick={()=>DeckDelete({userid:val._id})}>
+                <button className=" p-3 text-sm flex font-medium border hover:bg-purple-50 transition-all duration-200  border-gray-200  hover:cursor-pointer items-center gap-x-1 h-10  rounded-lg" onClick={()=>DeKdelete()}>
                   <Trash2 size={15}></Trash2>
                 </button>
               </div>

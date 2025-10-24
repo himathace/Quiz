@@ -4,6 +4,7 @@ import { BookOpen } from "lucide-react"
 import {signIn} from "next-auth/react"
 import { redirect } from "next/dist/server/api-utils"
 import { useState } from "react"
+import { Spinner } from "@/components/ui/spinner"
 
 
 export default function Login(){
@@ -11,6 +12,7 @@ export default function Login(){
     const [email,setemail]=useState("")
     const [password,setpassword]=useState("")
     const [error,seterror]=useState("")
+    const [loading,setloading]=useState(false)
 
     async function handlelogin(){
 
@@ -24,7 +26,10 @@ export default function Login(){
             seterror("Invalid Username or Password")
         }
         else{
-            window.location.href="/dashboard"
+            setloading(true)
+            setTimeout(() => {
+                window.location.href = "/dashboard"
+            }, 3000)
         }
 
 
@@ -40,7 +45,17 @@ export default function Login(){
             <div className="h-2 mt-1">
                 {error && <p className="text-red-500 text-xs">{error}</p>}
             </div>
-            <button className="bg-gradient-to-r from-purple-600 to-fuchsia-600  rounded-lg text-sm text-white mt-5 h-10 font-semibold" onClick={()=>handlelogin()}>Sign in</button>
+            <button disabled={loading} className="bg-gradient-to-r from-purple-600 to-fuchsia-600  rounded-lg text-sm text-white mt-5 h-10 font-semibold" onClick={()=>handlelogin()}>{
+
+                loading ?
+
+                <div className="flex items-center justify-center gap-2">
+                    <Spinner />
+                    <span>signing in</span>
+                </div> 
+                : "sign in"
+
+            }</button>
         </>
     )
 }
