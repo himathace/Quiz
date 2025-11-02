@@ -1,16 +1,40 @@
 "use client"
 import { useState } from "react"
+import { Pencil } from 'lucide-react';
+import { Trash2 } from 'lucide-react';
+import CardDelete from "../actions/deleteflash";
+import { toast } from "sonner";
 
-const Flash=({xx})=>{
 
-    const [isfliped,setisfliped]=useState(false)
+const Flash=({xx,dec})=>{
+
+    const [isfliped,setisfliped]=useState(false )
+
+
+
+    async function deleteFlash() {
+        const data=await CardDelete({cardid:xx._id,deckid:dec})
+        if(data.success){
+            toast.success("FlashCard Deleted successfully!")
+        }
+    }
 
     return(
     
-        <div className=" hover:shadow-lg bg-white transition-shadow duration-300 perspective cursor-pointer h-56" onClick={()=>setisfliped(!isfliped)}>
+        <div className=" group bg-white transition-shadow duration-300 rounded-xl perspective cursor-pointer h-56" >
+
             <div className={` relative transition-transform duration-500 transform-style-preserve-3d w-full h-full ${isfliped ? "rotate-y-180" : ""}`}>
+
+                <div className="flex opacity-0 group-hover:opacity-100 transition-opacity duration-200  gap-x-2 absolute right-3 top-5 z-10">
+                    <button>
+                        <Pencil size={15} className="text-blue-500"></Pencil>
+                    </button>
+                    <button onClick={deleteFlash}>
+                        <Trash2 size={15} className="text-red-500"></Trash2>
+                    </button>
+                </div>
                  
-                 <div className="absolute inset-0 border flex flex-col justify-between items-center  border-gray-300 rounded-xl shadow-sm p-4 backface-hidden">
+                <div className="absolute inset-0  flex flex-col justify-between items-center  rounded-xl shadow p-4 backface-hidden">
                     <div className="flex-1 flex justify-center items-center font-semibold text-xl">
                         {xx.quiz}
                     </div>
@@ -23,9 +47,9 @@ const Flash=({xx})=>{
                         </div>
                         <p className="text-gray-600">Click to Flip</p>
                     </div>
-                 </div>
+                </div>
 
-                <div className=" absolute inset-0 border bg-gradient-to-br  from-purple-300 to bg-purple-400 flex justify-center items-center font-semibold text-xl border-gray-300 rounded-xl shadow-sm p-4 backface-hidden rotate-y-180 text-white "  >{xx.answer}</div>
+                <div className=" absolute inset-0 border bg-gradient-to-br  from-purple-400 to bg-fuchsia-400 flex justify-center items-center font-semibold text-xl  rounded-xl shadow p-4 backface-hidden rotate-y-180 text-white "  >{xx.answer}</div>
             </div>
 
         </div>

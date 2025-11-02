@@ -5,26 +5,22 @@ import connect from "@/lib/mongodb";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
-export default async function AddNewFlashcards(formdata){
+export default async function AddNewFlashcards(DE,QUestion,ANswer,OPtion1,OPtion2,OPtion3,OPtion4,SElect){
 
-    await connect()
 
-    const deckc=formdata.get("deck")
-    const userquestion=formdata.get("qu")
-    const useranswer=formdata.get("answer")
-    const carddificalty=formdata.get("deficult")
-    const option1=formdata.get("op1")
-    const option2=formdata.get("op2")
-    const option3=formdata.get("op3")
-    const option4=formdata.get("op4")
+    try{
 
-    // await Deck.findByIdAndUpdate(
-    //     deckc,
-    //     {$push:{cards:{quiz:userquestion,answer:useranswer,deficulty:carddificalty,options:[option1,option2,option3,option4]}}}
-    
-    // )
-    console.log("card added")
-    revalidatePath(`/flashcards/${deckc}`)
-    redirect(`/flashcards/${deckc}`)
+        await connect()
+        await Deck.findByIdAndUpdate(
+            DE,
+            {$push:{cards:{quiz:QUestion,answer:ANswer,deficulty:SElect,options:[OPtion1,OPtion2,OPtion3,OPtion4]}}}
+        
+        )
+        revalidatePath(`/flashcards/${DE}`)
+        return {success:true}
+    }
+    catch(error){
+        return {success:false}
+    }
 
 }

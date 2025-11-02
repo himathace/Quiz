@@ -7,6 +7,7 @@ import { getServerSession } from "next-auth";
 import CreateDeckDialog from "../../components/dialog";
 import { authoptions } from "../../api/auth/[...nextauth]/route";
 import Pop from "../../components/dashboardpopup";
+import { redirect } from "next/navigation";
 
 
 // Make this page dynamic to avoid build-time fetch issues
@@ -19,9 +20,7 @@ export default async function userdashboard() {
   const session = await getServerSession(authoptions);
 
   if(!session){
-    return(
-      <h1>Loading</h1>
-    )
+      redirect("/login")
   }
 
   const userdata=await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/displaydeck`,{
