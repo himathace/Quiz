@@ -5,6 +5,8 @@ import { Sparkles } from 'lucide-react'
 import { TrendingUp } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
+import { Toaster } from "@/components/ui/sonner"
+
 
 
 
@@ -49,6 +51,7 @@ export default function authlayout({children}){
                             <button >Sign up</button>
                         </Link> 
                     </div>
+                    <Toaster richColors  theme="light" position="top-right" />
                     {children}
                     <div className="mt-4">
                         <button className="w-full flex justify-center items-center border h-10 rounded-lg gap-x-3 font-semibold text-sm text-[#333]">

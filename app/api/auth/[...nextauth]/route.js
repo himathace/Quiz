@@ -14,6 +14,7 @@ export const authoptions={
             name:"credentials",
             async authorize(credentals){
                 try{
+                    
 
                     await connect()
                     if(credentals.email.length===0){
@@ -32,7 +33,6 @@ export const authoptions={
                     if(useremail.password!==credentals.password){
                         return null
                     }
-                    return {name:useremail.username,email:useremail.email}
                 }
                 catch(error){
                     console.error("auth error")
@@ -42,9 +42,6 @@ export const authoptions={
             }
         }),
     ],
-    session:{
-        strategy:"jwt"
-    },
     pages:{
         signIn:"/login"
 

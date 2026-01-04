@@ -56,20 +56,20 @@ export default function CreateDeckDialog({username}){
                     </DialogHeader>
                     <div className="flex flex-col mt-5">
                         <label className="text-sm font-medium text-black mb-2">Deck Name</label>
-                        <Input type="text" onChange={(e)=>setname(e.target.value)} className=" h-10 rounded-lg border-2 focus:outline-none focus:border-purple-500 border-slate-200 focus:ring-purple-500 focus-visible:ring-1 transition-all duration-200 pl-3 mb-3 focus-visible:ring-purple-7  00 focus-visible:border-purple-500 " placeholder="Enter a name for your deck" name="deckname" ></Input>
+                        <input type="text" onChange={(e)=>setname(e.target.value)} className=" h-10  transition-all duration-200 pl-3 mb-3 border-2 border-[#DDE4EE] focus:outline-gray-300  w-full rounded-lg p-2 placeholder:text-sm placeholder:font-normal focus:ring-3  focus:ring-purple-500" placeholder="Enter a name for your deck" name="deckname" ></input>
                     </div>
                     <div className="flex flex-col">
                         <label className="text-sm font-medium text-black mb-2">Description</label>
-                        <Textarea  className="  h-28 rounded-lg focus:outline-none   border-2 border-slate-200  transition-all duration-200 p-3 mb-2 focus-visible:ring-purple-500 focus-visible:ring-1 focus-visible:border-purple-500 " placeholder="Describe what this deck is about" name="description" onChange={(e)=>{setdiscription(e.target.value)}} ></Textarea>
+                        <textarea  className="transition-all duration-200 pl-3 mb-3 border-2 border-[#DDE4EE] focus:outline-gray-300  w-full rounded-lg p-2 placeholder:text-sm placeholder:font-normal focus:ring-3  focus:ring-purple-500 " placeholder="Describe what this deck is about" name="description" onChange={(e)=>{setdiscription(e.target.value)}} ></textarea>
                     </div>
                     <div className="flex flex-col mb-5 w-full">
                         <label className="text-sm font-medium text-black mb-3">Category</label>
-                        <Select name="drop" onValueChange={setcategory}>
-                          <SelectTrigger className="w-full focus:ring-purple-500 focus:ring-2 ">
+                        <Select name="drop" onValueChange={setcategory} className="focus-visible:ring-2 focus-visible:ring-purple-500">
+                          <SelectTrigger className="w-full focus:ring-purple-500 focus:ring-2   ">
                             <SelectValue placeholder="Choose Category" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="Math" className="focus:bg-purple-400 focus:text-white transition-all duration-200">Math</SelectItem>
+                            <SelectItem value="Math" className="focus:bg-purple-400 focus:text-white transition-all duration-200 ">Math</SelectItem>
                             <SelectItem value="Science" className="focus:bg-purple-400 focus:text-white transition-all duration-200">Science</SelectItem>
                             <SelectItem value="Health" className="focus:bg-purple-400 focus:text-white transition-all duration-200" >Health</SelectItem>
                           </SelectContent>
