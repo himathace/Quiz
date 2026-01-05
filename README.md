@@ -4,11 +4,13 @@ QuizMaster is a simple, mordern and interactive application designed to test kno
 
 ## Features
 
+- NextAuth authentication
 - Two Modes: Switch between Study Mode (flip cards) and Quiz Mode (take quizzes).
 - Interactive Flashcards: Simple and clean UI to view and flip cards.
 - Score Tracking: Evaluate performance in quiz mode.
 - Fast & Responsive: Built with Next.js for a smooth and responsive experience.
 - Modern UI: Clean design with Tailwind CSS (optional if you’re using it).
+- AI powerd
 
 ## Installation
 
